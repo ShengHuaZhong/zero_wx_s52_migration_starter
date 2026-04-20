@@ -713,6 +713,17 @@ if(BUILD_TESTING)
     )
 
     add_test(
+        NAME golden-image-harness-smoke
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_GOLDEN_NAME:STRING=golden-harness-self-check"
+            "-DZERO_WX_GOLDEN_EXPECTED:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/vendor/opencpn_s57data/rastersymbols-day.png"
+            "-DZERO_WX_GOLDEN_ACTUAL:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/vendor/opencpn_s57data/rastersymbols-day.png"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/compare_golden_image.cmake"
+    )
+
+    add_test(
         NAME zero-wx-rule-freeze
         COMMAND
             "${CMAKE_COMMAND}"

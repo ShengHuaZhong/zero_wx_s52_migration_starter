@@ -9,8 +9,10 @@
 #include <QCommandLineOption>
 #include <QCommandLineParser>
 #include <QDebug>
+#include <QDir>
 #include <QElapsedTimer>
 #include <QEventLoop>
+#include <QFileInfo>
 #include <QImage>
 #include <QString>
 
@@ -124,6 +126,9 @@ int main(int argc, char** argv) {
     const QCommandLineOption real_s57_smoke_option(
         "real-s57-smoke",
         "Open a real external S57 dataset through the host smoke path and exit.");
+    const QCommandLineOption golden_capture_option(
+        "golden-capture",
+        "Render the opened chart offscreen, save framebuffer to --capture-path, and exit.");
     const QCommandLineOption asset_root_option(
         "asset-root",
         "Headless asset root to initialize.",
@@ -139,18 +144,25 @@ int main(int argc, char** argv) {
         "Palette name for the built-in chart.",
         "name",
         "DAY_BRIGHT");
+    const QCommandLineOption capture_path_option(
+        "capture-path",
+        "Output image path used by --golden-capture.",
+        "path");
 
     parser.addOption(smoke_test_option);
     parser.addOption(non_blank_smoke_option);
     parser.addOption(real_s57_smoke_option);
+    parser.addOption(golden_capture_option);
     parser.addOption(asset_root_option);
     parser.addOption(s57_root_option);
     parser.addOption(palette_option);
+    parser.addOption(capture_path_option);
     parser.process(app);
 
     const std::string asset_root = parser.value(asset_root_option).toStdString();
     const std::string s57_root = parser.value(s57_root_option).toStdString();
     const std::string palette_name = parser.value(palette_option).toStdString();
+    const QString capture_path = parser.value(capture_path_option);
 
     std::optional<marine_chart::chart_runtime::OpenChartResult> open_chart_result;
     if(parser.isSet(real_s57_smoke_option)) {
@@ -195,6 +207,38 @@ int main(int argc, char** argv) {
         if(!widget.has_chart() || widget.current_command_count() == 0 || widget.current_render_frame() == nullptr) {
             qCritical() << "Real S57 smoke did not produce a usable host render frame.";
             return 5;
+        }
+
+        return 0;
+    }
+
+    if(parser.isSet(golden_capture_option)) {
+        if(capture_path.isEmpty()) {
+            qCritical() << "--golden-capture requires --capture-path.";
+            return 6;
+        }
+
+        const QFileInfo capture_file_info(capture_path);
+        const QDir capture_directory = capture_file_info.absoluteDir();
+        if(!capture_directory.exists() && !capture_directory.mkpath(".")) {
+            qCritical() << "Failed to create capture output directory:" << capture_directory.absolutePath();
+            return 7;
+        }
+
+        widget.show();
+        drain_render_events(app, widget);
+        widget.set_open_chart_result(*open_chart_result);
+        drain_render_events(app, widget);
+        const QImage chart_framebuffer = widget.grabFramebuffer();
+
+        if(chart_framebuffer.isNull()) {
+            qCritical() << "Failed to capture framebuffer for golden output.";
+            return 8;
+        }
+
+        if(!chart_framebuffer.save(capture_path)) {
+            qCritical() << "Failed to save golden capture image to" << capture_path;
+            return 9;
         }
 
         return 0;

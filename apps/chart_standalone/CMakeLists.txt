@@ -81,4 +81,22 @@ if(BUILD_TESTING)
         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
         SKIP_RETURN_CODE 125
     )
+
+    set(_zero_wx_chart_standalone_golden_capture_path
+        "${CMAKE_CURRENT_BINARY_DIR}/chart-standalone-golden-capture.png")
+    add_test(
+        NAME chart-standalone-golden-capture-smoke
+        COMMAND
+            "${CMAKE_COMMAND}" -E env
+                "PATH=${_zero_wx_chart_standalone_test_path}"
+                "QT_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins"
+                "QT_QPA_PLATFORM_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins/platforms"
+                "QT_QPA_PLATFORM=windows"
+                $<TARGET_FILE:chart_standalone>
+                --golden-capture
+                "--capture-path=${_zero_wx_chart_standalone_golden_capture_path}"
+    )
+    set_tests_properties(chart-standalone-golden-capture-smoke PROPERTIES
+        WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+    )
 endif()
