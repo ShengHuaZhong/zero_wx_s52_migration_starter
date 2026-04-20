@@ -1,3 +1,4 @@
+#include "marine_chart/s52_core_headless/asset_catalog_types.h"
 #include "marine_chart/s52_core_headless/neutral_config_loader.h"
 #include "marine_chart/s52_core_headless/neutral_font_descriptor.h"
 #include "marine_chart/s52_core_headless/neutral_image_metadata.h"
@@ -141,6 +142,67 @@ int main() {
 
     if(!font_descriptor.is_valid()) {
         return 28;
+    }
+
+    marine_chart::s52_core_headless::AssetCatalogs asset_catalogs;
+
+    marine_chart::s52_core_headless::PaletteDefinition day_palette;
+    day_palette.name = "DAY";
+    day_palette.entries.emplace("CHBLK", marine_chart::s52_core_headless::make_neutral_color(18, 18, 18));
+    asset_catalogs.palettes.palettes.emplace(day_palette.name, day_palette);
+
+    marine_chart::s52_core_headless::SymbolDefinition symbol_definition;
+    symbol_definition.name = "BOYLAT";
+    symbol_definition.atlas = marine_chart::s52_core_headless::make_neutral_image_metadata(
+        "symbol-atlas",
+        "vendor/opencpn_s57data/rastersymbols-day.png",
+        512,
+        512);
+    symbol_definition.source_rect = marine_chart::s52_core_headless::make_neutral_rect(0, 0, 32, 32);
+    symbol_definition.pivot = marine_chart::s52_core_headless::make_neutral_point(16, 16);
+    asset_catalogs.symbols.symbols.emplace(symbol_definition.name, symbol_definition);
+
+    marine_chart::s52_core_headless::LineStyleDefinition line_style_definition;
+    line_style_definition.name = "DOTT";
+    line_style_definition.vector_source = "SP1,1,1";
+    asset_catalogs.line_styles.line_styles.emplace(line_style_definition.name, line_style_definition);
+
+    marine_chart::s52_core_headless::PatternDefinition pattern_definition;
+    pattern_definition.name = "FOULAR01";
+    pattern_definition.tile_size = marine_chart::s52_core_headless::make_neutral_size(64, 64);
+    pattern_definition.pattern_source = "PATTERN-SOURCE";
+    asset_catalogs.patterns.patterns.emplace(pattern_definition.name, pattern_definition);
+
+    if(asset_catalogs.empty()) {
+        return 29;
+    }
+
+    if(asset_catalogs.palettes.empty()) {
+        return 30;
+    }
+
+    const auto palette_match = asset_catalogs.palettes.palettes.find("DAY");
+    if(palette_match == asset_catalogs.palettes.palettes.end()) {
+        return 31;
+    }
+
+    if(palette_match->second.entries.find("CHBLK") == palette_match->second.entries.end()) {
+        return 32;
+    }
+
+    const auto symbol_match = asset_catalogs.symbols.symbols.find("BOYLAT");
+    if(symbol_match == asset_catalogs.symbols.symbols.end() || symbol_match->second.empty()) {
+        return 33;
+    }
+
+    const auto line_match = asset_catalogs.line_styles.line_styles.find("DOTT");
+    if(line_match == asset_catalogs.line_styles.line_styles.end() || line_match->second.empty()) {
+        return 34;
+    }
+
+    const auto pattern_match = asset_catalogs.patterns.patterns.find("FOULAR01");
+    if(pattern_match == asset_catalogs.patterns.patterns.end() || pattern_match->second.empty()) {
+        return 35;
     }
 
     return 0;
