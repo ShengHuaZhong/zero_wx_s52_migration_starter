@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 007-state-files-bootstrap
+- Current task: 008-empty-smoke-build
 - Status: pending

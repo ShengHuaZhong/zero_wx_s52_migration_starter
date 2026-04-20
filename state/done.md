@@ -6,3 +6,4 @@
 - 2026-04-20 `004-coding-rules`: verified that `docs/coding_rules.md` is present and already fixes the zero-wx rules, layer boundaries, task execution policy, and validation expectations.
 - 2026-04-20 `005-build-environment`: verified that `docs/build_environment.md` and `docs/build_env.md` already define the local Windows/MSVC/Qt environment, command conventions, and host validation expectations.
 - 2026-04-20 `006-local-build-scripts`: verified that `scripts/local_build.ps1` and `scripts/local_smoke.ps1` are present and already provide the minimal configure/build/test command entrypoints for local Windows validation.
+- 2026-04-20 `007-state-files-bootstrap`: verified that `state/current_iteration.md`, `state/done.md`, and `state/blocked.md` are present and now provide the bootstrap state tracking flow for the task sequence.
