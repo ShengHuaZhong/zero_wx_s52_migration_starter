@@ -7,6 +7,7 @@
 #include "marine_chart/s52_core_headless/neutral_font_descriptor.h"
 #include "marine_chart/s52_core_headless/neutral_image_metadata.h"
 #include "marine_chart/s52_core_headless/module.h"
+#include "marine_chart/s52_core_headless/pattern_catalog_loader.h"
 #include "marine_chart/s52_core_headless/symbol_catalog_loader.h"
 
 #include <string_view>
@@ -178,8 +179,16 @@ int main() {
     asset_catalogs.line_styles.line_styles.emplace(line_style_definition.name, line_style_definition);
 
     marine_chart::s52_core_headless::PatternDefinition pattern_definition;
+    pattern_definition.rcid = "2000";
     pattern_definition.name = "FOULAR01";
+    pattern_definition.definition_code = "V";
+    pattern_definition.fill_type = "S";
+    pattern_definition.spacing = "C";
     pattern_definition.tile_size = marine_chart::s52_core_headless::make_neutral_size(64, 64);
+    pattern_definition.pivot = marine_chart::s52_core_headless::make_neutral_point(32, 32);
+    pattern_definition.origin = marine_chart::s52_core_headless::make_neutral_point(0, 0);
+    pattern_definition.description = "sample pattern";
+    pattern_definition.color_reference = "CHBLK";
     pattern_definition.pattern_source = "PATTERN-SOURCE";
     asset_catalogs.patterns.patterns.emplace(pattern_definition.name, pattern_definition);
 
@@ -360,6 +369,45 @@ int main() {
 
     if(achare51->second.color_reference != "ACHMGD") {
         return 65;
+    }
+
+    const auto pattern_catalog =
+        marine_chart::s52_core_headless::load_pattern_catalog_from_asset_root("vendor/opencpn_s57data");
+    if(!pattern_catalog.has_value() || pattern_catalog->empty()) {
+        return 66;
+    }
+
+    const auto airare02 = pattern_catalog->patterns.find("AIRARE02");
+    if(airare02 == pattern_catalog->patterns.end()) {
+        return 67;
+    }
+
+    if(airare02->second.rcid != "2000") {
+        return 68;
+    }
+
+    if(airare02->second.definition_code != "V") {
+        return 69;
+    }
+
+    if(airare02->second.fill_type != "S" || airare02->second.spacing != "C") {
+        return 70;
+    }
+
+    if(airare02->second.tile_size != marine_chart::s52_core_headless::make_neutral_size(618, 528)) {
+        return 71;
+    }
+
+    if(airare02->second.pivot != marine_chart::s52_core_headless::make_neutral_point(2259, 2256)) {
+        return 72;
+    }
+
+    if(airare02->second.origin != marine_chart::s52_core_headless::make_neutral_point(435, 452)) {
+        return 73;
+    }
+
+    if(airare02->second.color_reference != "ALANDF") {
+        return 74;
     }
 
     return 0;

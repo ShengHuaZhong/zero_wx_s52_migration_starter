@@ -92,12 +92,28 @@ struct LineStyleCatalog final {
 };
 
 struct PatternDefinition final {
+    NeutralString rcid;
     NeutralString name;
+    NeutralString definition_code;
+    NeutralString fill_type;
+    NeutralString spacing;
     NeutralSize tile_size;
+    NeutralPoint pivot;
+    NeutralPoint origin;
+    NeutralString description;
+    NeutralString color_reference;
     NeutralString pattern_source;
 
     [[nodiscard]] bool empty() const noexcept {
-        return name.empty() || tile_size.is_empty() || pattern_source.empty();
+        return rcid.empty()
+            || name.empty()
+            || definition_code.empty()
+            || fill_type.empty()
+            || spacing.empty()
+            || tile_size.is_empty()
+            || description.empty()
+            || color_reference.empty()
+            || pattern_source.empty();
     }
 
     bool operator==(const PatternDefinition&) const noexcept = default;
