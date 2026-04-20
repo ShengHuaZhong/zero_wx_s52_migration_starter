@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 005-build-environment
+- Current task: 006-local-build-scripts
 - Status: pending
