@@ -1,5 +1,5 @@
 # current_iteration
 
-- Current phase: D
-- Current task: 087-real-s57-smoke
-- Status: pending
+- Current phase: G
+- Current task: 088-regression-scene-policy
+- Status: in_progress

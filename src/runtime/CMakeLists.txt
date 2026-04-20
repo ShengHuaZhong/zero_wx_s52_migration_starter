@@ -21,6 +21,7 @@ target_sources(chart_runtime
         portrayal_ir_ingestion.cpp
         runtime_palette_colors.cpp
         runtime_render_frame.cpp
+        s57_dataset_ingestion.cpp
         text_layout.cpp
         text_renderer.cpp
         text_rule_ir.cpp
@@ -46,6 +47,7 @@ target_sources(chart_runtime
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/priority_sorter.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/runtime_palette_colors.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/runtime_render_frame.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/s57_dataset_ingestion.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/text_layout.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/text_renderer.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/text_rule_ir.h"

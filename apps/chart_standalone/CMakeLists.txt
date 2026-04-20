@@ -63,4 +63,22 @@ if(BUILD_TESTING)
     set_tests_properties(chart-standalone-non-blank-render-smoke PROPERTIES
         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
     )
+
+    add_test(
+        NAME chart-standalone-real-s57-smoke
+        COMMAND
+            "${CMAKE_COMMAND}" -E env
+                "PATH=${_zero_wx_chart_standalone_test_path}"
+                "QT_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins"
+                "QT_QPA_PLATFORM_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins/platforms"
+                "QT_QPA_PLATFORM=offscreen"
+                "S57_TESTDATA_ROOT=$ENV{S57_TESTDATA_ROOT}"
+                $<TARGET_FILE:chart_standalone>
+                --real-s57-smoke
+                "--s57-root=$ENV{S57_TESTDATA_ROOT}"
+    )
+    set_tests_properties(chart-standalone-real-s57-smoke PROPERTIES
+        WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+        SKIP_RETURN_CODE 125
+    )
 endif()
