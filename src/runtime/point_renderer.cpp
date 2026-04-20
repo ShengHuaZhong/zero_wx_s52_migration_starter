@@ -11,11 +11,6 @@ std::optional<PointRenderCommand> build_point_render_command(
         return std::nullopt;
     }
 
-    const auto tint_color = find_runtime_palette_color(palette_colors, atlas_entry.color_token);
-    if(!tint_color.has_value()) {
-        return std::nullopt;
-    }
-
     PointRenderCommand command;
     command.instruction_id = point_symbol_ir.instruction.stable_id;
     command.symbol_name = point_symbol_ir.symbol_name;
@@ -26,7 +21,8 @@ std::optional<PointRenderCommand> build_point_render_command(
     command.source_height = atlas_entry.source_height;
     command.pivot_x = atlas_entry.pivot_x;
     command.pivot_y = atlas_entry.pivot_y;
-    command.tint_color = *tint_color;
+    command.tint_color =
+        find_runtime_palette_color(palette_colors, atlas_entry.color_token).value_or(make_runtime_color(255, 255, 255));
 
     if(!command.valid()) {
         return std::nullopt;

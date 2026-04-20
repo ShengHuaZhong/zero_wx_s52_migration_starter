@@ -16,22 +16,15 @@ std::optional<AreaRenderCommand> build_area_render_command(
 
     if(!area_pattern_ir.fill_color_token.empty()) {
         const auto fill_color = find_runtime_palette_color(palette_colors, area_pattern_ir.fill_color_token);
-        if(!fill_color.has_value()) {
-            return std::nullopt;
+        if(fill_color.has_value()) {
+            command.fill_color = *fill_color;
         }
-
-        command.fill_color = *fill_color;
     }
 
     if(!area_pattern_ir.pattern_name.empty()) {
         if(!pattern_atlas_entry.has_value() || !pattern_atlas_entry->valid()
             || pattern_atlas_entry->pattern_name != area_pattern_ir.pattern_name
             || pattern_atlas_entry->palette_name != palette_colors.palette_name) {
-            return std::nullopt;
-        }
-
-        const auto pattern_color = find_runtime_palette_color(palette_colors, pattern_atlas_entry->color_token);
-        if(!pattern_color.has_value()) {
             return std::nullopt;
         }
 
@@ -46,7 +39,8 @@ std::optional<AreaRenderCommand> build_area_render_command(
         command.pivot_y = pattern_atlas_entry->pivot_y;
         command.origin_x = pattern_atlas_entry->origin_x;
         command.origin_y = pattern_atlas_entry->origin_y;
-        command.pattern_color = *pattern_color;
+        command.pattern_color = find_runtime_palette_color(palette_colors, pattern_atlas_entry->color_token)
+                                    .value_or(make_runtime_color(255, 255, 255));
     }
 
     if(!command.valid()) {

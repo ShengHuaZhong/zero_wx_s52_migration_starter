@@ -48,8 +48,10 @@ int main() {
 
     marine_chart::chart_runtime::RuntimePaletteColors missing_color_palette = palette_colors;
     missing_color_palette.entries.clear();
-    if(marine_chart::chart_runtime::build_point_render_command(point_symbol_ir, *atlas_entry, missing_color_palette)
-           .has_value()) {
+    const auto fallback_render_command =
+        marine_chart::chart_runtime::build_point_render_command(point_symbol_ir, *atlas_entry, missing_color_palette);
+    if(!fallback_render_command.has_value()
+        || fallback_render_command->tint_color != marine_chart::chart_runtime::make_runtime_color(255, 255, 255)) {
         return 5;
     }
 

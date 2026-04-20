@@ -60,18 +60,22 @@ int main() {
 
     marine_chart::chart_runtime::RuntimePaletteColors missing_fill_palette = palette_colors;
     missing_fill_palette.entries.erase("AREAFILL");
-    if(marine_chart::chart_runtime::build_area_render_command(area_pattern_ir, pattern_atlas_entry, missing_fill_palette)
-           .has_value()) {
+    const auto pattern_only_command =
+        marine_chart::chart_runtime::build_area_render_command(area_pattern_ir, pattern_atlas_entry, missing_fill_palette);
+    if(!pattern_only_command.has_value() || pattern_only_command->has_fill() || !pattern_only_command->has_pattern()) {
         return 5;
     }
 
     marine_chart::chart_runtime::RuntimePaletteColors missing_pattern_palette = palette_colors;
     missing_pattern_palette.entries.erase(pattern_atlas_entry->color_token);
-    if(marine_chart::chart_runtime::build_area_render_command(
-           area_pattern_ir,
-           pattern_atlas_entry,
-           missing_pattern_palette)
-           .has_value()) {
+    const auto fallback_pattern_command = marine_chart::chart_runtime::build_area_render_command(
+        area_pattern_ir,
+        pattern_atlas_entry,
+        missing_pattern_palette);
+    if(!fallback_pattern_command.has_value()
+        || !fallback_pattern_command->pattern_color.has_value()
+        || *fallback_pattern_command->pattern_color
+            != marine_chart::chart_runtime::make_runtime_color(255, 255, 255)) {
         return 6;
     }
 
