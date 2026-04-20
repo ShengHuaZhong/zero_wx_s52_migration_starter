@@ -26,3 +26,4 @@
 - 2026-04-20 `024-ui-host-wx-types-audit`: added `docs/ui_host_wx_types_audit.md`, recording 121 UI/host wx type hits and identifying the `wxDC` / `wxGCDC` / `wxGLContext` / `glChartCanvas` hotspots that block direct headless extraction.
 - 2026-04-20 `025-classify-headless-candidates`: added `docs/headless_candidates.md`, capturing the conservative subset of S-52 rule/asset/geometry/CSP files that belong in the future headless core even though some still require later neutral-type rewrites.
 - 2026-04-20 `026-classify-rewrite-required`: added `docs/rewrite_required.md`, capturing the files and responsibility blocks that still matter to the migration but need project-owned rewrites instead of direct extraction.
+- 2026-04-20 `027-classify-must-drop`: added `docs/must_drop.md`, identifying the old DC / GCDC / GLContext / glChartCanvas entrypoints and shader/GL helper files that must be removed rather than wrapped into the new architecture.
