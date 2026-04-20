@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 053-csp-entry-audit
+- Current task: 054-csp-minimal-bridge
 - Status: pending
