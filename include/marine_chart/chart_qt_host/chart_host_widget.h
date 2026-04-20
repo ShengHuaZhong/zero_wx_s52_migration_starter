@@ -2,13 +2,13 @@
 
 #include "marine_chart/chart_runtime/open_chart.h"
 
-#include <QWidget>
+#include <qrhiwidget.h>
 
 #include <optional>
 
 namespace marine_chart::chart_qt_host {
 
-class ChartHostWidget final : public QWidget {
+class ChartHostWidget final : public QRhiWidget {
 public:
     explicit ChartHostWidget(QWidget* parent = nullptr);
 
@@ -18,6 +18,9 @@ public:
     [[nodiscard]] bool has_chart() const noexcept;
     [[nodiscard]] std::size_t current_command_count() const noexcept;
     [[nodiscard]] const marine_chart::chart_runtime::RuntimeRenderFrame* current_render_frame() const noexcept;
+
+protected:
+    void render(QRhiCommandBuffer* cb) override;
 
 private:
     std::optional<marine_chart::chart_runtime::OpenChartResult> open_chart_result_;

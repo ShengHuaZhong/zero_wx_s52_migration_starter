@@ -1,3 +1,11 @@
+find_package(
+    Qt6GuiPrivate 6.8
+    CONFIG
+    REQUIRED
+    PATHS "${Qt6_DIR}/../Qt6GuiPrivate" "$ENV{QT_ROOT}"
+    PATH_SUFFIXES lib/cmake/Qt6GuiPrivate
+)
+
 add_library(chart_qt_host STATIC)
 add_library(marine_chart::chart_qt_host ALIAS chart_qt_host)
 
@@ -22,6 +30,8 @@ target_link_libraries(chart_qt_host
     PUBLIC
         marine_chart::chart_runtime
         Qt6::Widgets
+    PRIVATE
+        Qt6::GuiPrivate
 )
 
 if(BUILD_TESTING)

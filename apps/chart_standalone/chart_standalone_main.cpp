@@ -8,6 +8,9 @@
 #include <QCommandLineOption>
 #include <QCommandLineParser>
 #include <QDebug>
+#include <QElapsedTimer>
+#include <QEventLoop>
+#include <QImage>
 #include <QString>
 
 #include <optional>
@@ -63,6 +66,18 @@ std::optional<marine_chart::chart_runtime::OpenChartResult> open_demo_chart(
         palette_name);
 }
 
+void drain_render_events(
+    QApplication& app,
+    marine_chart::chart_qt_host::ChartHostWidget& widget,
+    int timeout_ms = 500) {
+    QElapsedTimer timer;
+    timer.start();
+    while(timer.elapsed() < timeout_ms) {
+        widget.update();
+        app.processEvents(QEventLoop::AllEvents, 50);
+    }
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -74,6 +89,9 @@ int main(int argc, char** argv) {
     parser.addHelpOption();
 
     const QCommandLineOption smoke_test_option("smoke-test", "Open the built-in chart and exit.");
+    const QCommandLineOption non_blank_smoke_option(
+        "non-blank-smoke",
+        "Render the built-in chart offscreen and verify the framebuffer is not blank.");
     const QCommandLineOption asset_root_option(
         "asset-root",
         "Headless asset root to initialize.",
@@ -86,6 +104,7 @@ int main(int argc, char** argv) {
         "DAY_BRIGHT");
 
     parser.addOption(smoke_test_option);
+    parser.addOption(non_blank_smoke_option);
     parser.addOption(asset_root_option);
     parser.addOption(palette_option);
     parser.process(app);
@@ -103,9 +122,9 @@ int main(int argc, char** argv) {
                               .arg(QString::fromStdString(open_chart_result->palette_name))
                               .arg(open_chart_result->render_frame.sorted_instructions.size()));
     widget.resize(1280, 720);
-    widget.set_open_chart_result(*open_chart_result);
 
     if(parser.isSet(smoke_test_option)) {
+        widget.set_open_chart_result(*open_chart_result);
         if(!widget.has_chart() || widget.current_command_count() == 0 || widget.current_render_frame() == nullptr) {
             qCritical() << "Standalone host did not retain the opened chart result.";
             return 2;
@@ -114,6 +133,24 @@ int main(int argc, char** argv) {
         return 0;
     }
 
+    if(parser.isSet(non_blank_smoke_option)) {
+        widget.show();
+        drain_render_events(app, widget);
+        const QImage empty_framebuffer = widget.grabFramebuffer();
+
+        widget.set_open_chart_result(*open_chart_result);
+        drain_render_events(app, widget);
+        const QImage chart_framebuffer = widget.grabFramebuffer();
+
+        if(empty_framebuffer.isNull() || chart_framebuffer.isNull() || empty_framebuffer == chart_framebuffer) {
+            qCritical() << "Standalone host framebuffer stayed blank after opening the chart.";
+            return 3;
+        }
+
+        return 0;
+    }
+
+    widget.set_open_chart_result(*open_chart_result);
     widget.show();
     return app.exec();
 }
