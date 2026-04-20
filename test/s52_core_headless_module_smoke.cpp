@@ -1,5 +1,6 @@
 #include "marine_chart/s52_core_headless/asset_catalog_types.h"
 #include "marine_chart/s52_core_headless/chartsymbols_xml_loader.h"
+#include "marine_chart/s52_core_headless/csv_dictionary_loader.h"
 #include "marine_chart/s52_core_headless/neutral_config_loader.h"
 #include "marine_chart/s52_core_headless/neutral_font_descriptor.h"
 #include "marine_chart/s52_core_headless/neutral_image_metadata.h"
@@ -229,6 +230,46 @@ int main() {
         || !chartsymbols_document->has_patterns
         || !chartsymbols_document->has_symbols) {
         return 40;
+    }
+
+    const auto attribute_dictionary =
+        marine_chart::s52_core_headless::load_attribute_dictionary("vendor/opencpn_s57data");
+    if(!attribute_dictionary.has_value() || !attribute_dictionary->valid()) {
+        return 41;
+    }
+
+    if(attribute_dictionary->header.size() < 5 || attribute_dictionary->header.front() != "Code") {
+        return 42;
+    }
+
+    if(attribute_dictionary->rows.empty() || attribute_dictionary->rows.front().fields.size() < 3) {
+        return 43;
+    }
+
+    if(attribute_dictionary->rows.front().fields[2] != "AGENCY") {
+        return 44;
+    }
+
+    const auto object_class_dictionary =
+        marine_chart::s52_core_headless::load_object_class_dictionary("vendor/opencpn_s57data");
+    if(!object_class_dictionary.has_value() || !object_class_dictionary->valid()) {
+        return 45;
+    }
+
+    bool found_beacon_cardinal = false;
+    for(const auto& row : object_class_dictionary->rows) {
+        if(row.fields.size() >= 3 && row.fields[2] == "BCNCAR") {
+            if(row.fields[1] != "Beacon, cardinal") {
+                return 46;
+            }
+
+            found_beacon_cardinal = true;
+            break;
+        }
+    }
+
+    if(!found_beacon_cardinal) {
+        return 47;
     }
 
     return 0;

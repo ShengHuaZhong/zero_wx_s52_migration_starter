@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 044-csv-dictionary-loader
+- Current task: 045-color-table-loader
 - Status: pending
