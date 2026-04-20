@@ -39,6 +39,9 @@ if(BUILD_TESTING)
         NAME s52-core-headless-module-smoke
         COMMAND s52_core_headless_module_smoke
     )
+    set_tests_properties(s52-core-headless-module-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
 
     add_test(
         NAME s57data-asset-presence

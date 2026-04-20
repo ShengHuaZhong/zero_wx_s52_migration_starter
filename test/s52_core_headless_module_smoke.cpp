@@ -1,4 +1,5 @@
 #include "marine_chart/s52_core_headless/asset_catalog_types.h"
+#include "marine_chart/s52_core_headless/chartsymbols_xml_loader.h"
 #include "marine_chart/s52_core_headless/neutral_config_loader.h"
 #include "marine_chart/s52_core_headless/neutral_font_descriptor.h"
 #include "marine_chart/s52_core_headless/neutral_image_metadata.h"
@@ -203,6 +204,31 @@ int main() {
     const auto pattern_match = asset_catalogs.patterns.patterns.find("FOULAR01");
     if(pattern_match == asset_catalogs.patterns.patterns.end() || pattern_match->second.empty()) {
         return 35;
+    }
+
+    const auto chartsymbols_document =
+        marine_chart::s52_core_headless::load_chartsymbols_xml("vendor/opencpn_s57data");
+    if(!chartsymbols_document.has_value()) {
+        return 36;
+    }
+
+    if(!chartsymbols_document->valid()) {
+        return 37;
+    }
+
+    if(chartsymbols_document->source_path.find("chartsymbols.xml") == std::string_view::npos) {
+        return 38;
+    }
+
+    if(chartsymbols_document->xml_text.find("<chartsymbols>") == std::string_view::npos) {
+        return 39;
+    }
+
+    if(!chartsymbols_document->has_color_tables
+        || !chartsymbols_document->has_line_styles
+        || !chartsymbols_document->has_patterns
+        || !chartsymbols_document->has_symbols) {
+        return 40;
     }
 
     return 0;
