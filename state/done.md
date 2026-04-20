@@ -15,3 +15,4 @@
 - 2026-04-20 `013-import-s57attributes-csv`: imported the pinned `s57attributes.csv` dictionary from the OpenCPN `5.12.4` snapshot into `vendor/opencpn_s57data/` and refreshed the provenance note to reflect the imported asset set.
 - 2026-04-20 `014-import-s57objectclasses-csv`: imported the pinned `s57objectclasses.csv` dictionary from the OpenCPN `5.12.4` snapshot into `vendor/opencpn_s57data/` and refreshed the provenance note to reflect the imported asset set.
 - 2026-04-20 `015-import-symbol-assets`: imported the three pinned `rastersymbols-*.png` symbol atlases referenced by `chartsymbols.xml` into `vendor/opencpn_s57data/` and refreshed the provenance note to reflect the imported asset set.
+- 2026-04-20 `016-import-line-assets`: verified that line-style assets are embedded in the already imported `chartsymbols.xml` `<line-styles>` section at the pinned OpenCPN snapshot and documented that boundary in `vendor/opencpn_s57data/README.md`.

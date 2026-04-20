@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 016-import-line-assets
+- Current task: 017-import-pattern-assets
 - Status: pending
