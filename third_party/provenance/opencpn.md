@@ -46,6 +46,9 @@ Why this snapshot:
   - `vendor/opencpn_s57data/chartsymbols.xml`
   - `vendor/opencpn_s57data/s57attributes.csv`
   - `vendor/opencpn_s57data/s57objectclasses.csv`
+  - `vendor/opencpn_s57data/rastersymbols-day.png`
+  - `vendor/opencpn_s57data/rastersymbols-dusk.png`
+  - `vendor/opencpn_s57data/rastersymbols-dark.png`
 - This record only establishes the source, version, and commit/tag boundary
 - Any future vendored payload must remain consistent with
   `third_party/LICENSES/upstream-license-audit.md`

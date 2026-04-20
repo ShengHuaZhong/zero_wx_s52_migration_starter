@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 015-import-symbol-assets
+- Current task: 016-import-line-assets
 - Status: pending
