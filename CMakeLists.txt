@@ -704,6 +704,15 @@ if(BUILD_TESTING)
     )
 
     add_test(
+        NAME regression-scene-policy-doc
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_REGRESSION_SCENE_POLICY_DOC:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/docs/regression_scene_policy.md"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_regression_scene_policy.cmake"
+    )
+
+    add_test(
         NAME zero-wx-rule-freeze
         COMMAND
             "${CMAKE_COMMAND}"

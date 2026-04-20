@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: G
-- Current task: 088-regression-scene-policy
+- Current task: 089-golden-image-harness
 - Status: in_progress
