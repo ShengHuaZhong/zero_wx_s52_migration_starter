@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 014-import-s57objectclasses-csv
+- Current task: 015-import-symbol-assets
 - Status: pending
