@@ -10,6 +10,7 @@ target_sources(s52_core_headless
         csv_dictionary_loader.cpp
         feature_attribute_adapter.cpp
         headless_core_init.cpp
+        line_portrayal_selection.cpp
         line_style_loader.cpp
         lookup_index.cpp
         lookup_key.cpp
@@ -31,6 +32,7 @@ target_sources(s52_core_headless
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/csv_dictionary_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/feature_attribute_adapter.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/headless_core_init.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/line_portrayal_selection.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/line_style_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/lookup_index.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/lookup_key.h"
