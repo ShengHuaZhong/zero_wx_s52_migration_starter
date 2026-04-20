@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 003-plan-md-initial
+- Current task: 004-coding-rules
 - Status: pending
