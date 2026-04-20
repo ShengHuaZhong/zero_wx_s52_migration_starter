@@ -3,6 +3,7 @@ add_library(marine_chart::chart_runtime ALIAS chart_runtime)
 
 target_sources(chart_runtime
     PRIVATE
+        area_renderer.cpp
         area_pattern_ir.cpp
         display_priority_ir.cpp
         feature_portrayal_ir.cpp
@@ -22,6 +23,7 @@ target_sources(chart_runtime
         FILE_SET HEADERS
         BASE_DIRS "${PROJECT_SOURCE_DIR}/include"
         FILES
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/area_renderer.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/area_pattern_ir.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/display_priority_ir.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/feature_portrayal_ir.h"
