@@ -11,3 +11,4 @@
 - 2026-04-20 `009-upstream-license-audit`: added an initial audit for the intended OpenCPN code and `s57data` asset families, documenting the GPL-based license posture and the isolation boundaries for future vendoring.
 - 2026-04-20 `010-upstream-provenance-record`: pinned the planned OpenCPN upstream snapshot to release `5.12.4` / tag `Release_5.12.4` / commit `37fd0cddb7334fe489e9f18aa163977a9c5c84f7` for both code and `s57data` asset imports.
 - 2026-04-20 `011-vendor-layout`: added directory policy documents for `third_party/` and `vendor/`, clarifying what can be vendored in each tree and how the OpenCPN code and `s57data` asset families stay isolated.
+- 2026-04-20 `012-import-chartsymbols-xml`: imported the pinned `chartsymbols.xml` file from the OpenCPN `5.12.4` snapshot into `vendor/opencpn_s57data/` as the first concrete portrayal asset.
