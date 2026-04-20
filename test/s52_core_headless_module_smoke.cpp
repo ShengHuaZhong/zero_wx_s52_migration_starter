@@ -2,6 +2,7 @@
 #include "marine_chart/s52_core_headless/chartsymbols_xml_loader.h"
 #include "marine_chart/s52_core_headless/color_table_loader.h"
 #include "marine_chart/s52_core_headless/csv_dictionary_loader.h"
+#include "marine_chart/s52_core_headless/line_style_loader.h"
 #include "marine_chart/s52_core_headless/neutral_config_loader.h"
 #include "marine_chart/s52_core_headless/neutral_font_descriptor.h"
 #include "marine_chart/s52_core_headless/neutral_image_metadata.h"
@@ -166,8 +167,14 @@ int main() {
     asset_catalogs.symbols.symbols.emplace(symbol_definition.name, symbol_definition);
 
     marine_chart::s52_core_headless::LineStyleDefinition line_style_definition;
+    line_style_definition.rcid = "3346";
     line_style_definition.name = "DOTT";
-    line_style_definition.vector_source = "SP1,1,1";
+    line_style_definition.description = "sample line style";
+    line_style_definition.vector_size = marine_chart::s52_core_headless::make_neutral_size(16, 4);
+    line_style_definition.pivot = marine_chart::s52_core_headless::make_neutral_point(8, 2);
+    line_style_definition.origin = marine_chart::s52_core_headless::make_neutral_point(0, 0);
+    line_style_definition.hpgl = "SP1,1,1";
+    line_style_definition.color_reference = "CHBLK";
     asset_catalogs.line_styles.line_styles.emplace(line_style_definition.name, line_style_definition);
 
     marine_chart::s52_core_headless::PatternDefinition pattern_definition;
@@ -322,6 +329,37 @@ int main() {
 
     if(achare02->second.color_reference != "ACHMGD") {
         return 58;
+    }
+
+    const auto line_style_catalog =
+        marine_chart::s52_core_headless::load_line_style_catalog_from_asset_root("vendor/opencpn_s57data");
+    if(!line_style_catalog.has_value() || line_style_catalog->empty()) {
+        return 59;
+    }
+
+    const auto achare51 = line_style_catalog->line_styles.find("ACHARE51");
+    if(achare51 == line_style_catalog->line_styles.end()) {
+        return 60;
+    }
+
+    if(achare51->second.rcid != "3346") {
+        return 61;
+    }
+
+    if(achare51->second.vector_size != marine_chart::s52_core_headless::make_neutral_size(3030, 503)) {
+        return 62;
+    }
+
+    if(achare51->second.pivot != marine_chart::s52_core_headless::make_neutral_point(108, 820)) {
+        return 63;
+    }
+
+    if(achare51->second.origin != marine_chart::s52_core_headless::make_neutral_point(306, 568)) {
+        return 64;
+    }
+
+    if(achare51->second.color_reference != "ACHMGD") {
+        return 65;
     }
 
     return 0;

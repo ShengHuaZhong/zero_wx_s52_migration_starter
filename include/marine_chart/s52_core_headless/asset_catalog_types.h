@@ -60,11 +60,22 @@ struct SymbolCatalog final {
 };
 
 struct LineStyleDefinition final {
+    NeutralString rcid;
     NeutralString name;
-    NeutralString vector_source;
+    NeutralString description;
+    NeutralSize vector_size;
+    NeutralPoint pivot;
+    NeutralPoint origin;
+    NeutralString hpgl;
+    NeutralString color_reference;
 
     [[nodiscard]] bool empty() const noexcept {
-        return name.empty() || vector_source.empty();
+        return rcid.empty()
+            || name.empty()
+            || description.empty()
+            || vector_size.is_empty()
+            || hpgl.empty()
+            || color_reference.empty();
     }
 
     bool operator==(const LineStyleDefinition&) const noexcept = default;

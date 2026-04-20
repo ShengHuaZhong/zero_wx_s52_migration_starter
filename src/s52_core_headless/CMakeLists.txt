@@ -6,6 +6,7 @@ target_sources(s52_core_headless
         chartsymbols_xml_loader.cpp
         color_table_loader.cpp
         csv_dictionary_loader.cpp
+        line_style_loader.cpp
         neutral_config_loader.cpp
         module.cpp
         symbol_catalog_loader.cpp
@@ -17,6 +18,7 @@ target_sources(s52_core_headless
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/chartsymbols_xml_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/color_table_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/csv_dictionary_loader.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/line_style_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_color.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_config_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_containers.h"
