@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 071-runtime-ir-ingestion
+- Current task: 072-palette-runtime-colors
 - Status: pending

@@ -110,6 +110,10 @@ if(BUILD_TESTING)
         test/chart_runtime_portrayal_ir_debug_dump_smoke.cpp
     )
 
+    add_executable(chart_runtime_portrayal_ir_ingestion_smoke
+        test/chart_runtime_portrayal_ir_ingestion_smoke.cpp
+    )
+
     target_link_libraries(s52_core_headless_module_smoke
         PRIVATE
             marine_chart::s52_core_headless
@@ -221,6 +225,11 @@ if(BUILD_TESTING)
     )
 
     target_link_libraries(chart_runtime_portrayal_ir_debug_dump_smoke
+        PRIVATE
+            marine_chart::chart_runtime
+    )
+
+    target_link_libraries(chart_runtime_portrayal_ir_ingestion_smoke
         PRIVATE
             marine_chart::chart_runtime
     )
@@ -415,6 +424,14 @@ if(BUILD_TESTING)
         COMMAND chart_runtime_portrayal_ir_debug_dump_smoke
     )
     set_tests_properties(chart-runtime-portrayal-ir-debug-dump-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+
+    add_test(
+        NAME chart-runtime-portrayal-ir-ingestion-smoke
+        COMMAND chart_runtime_portrayal_ir_ingestion_smoke
+    )
+    set_tests_properties(chart-runtime-portrayal-ir-ingestion-smoke PROPERTIES
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 
