@@ -41,4 +41,14 @@ if(BUILD_TESTING)
             -P
             "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_headless_boundary_design.cmake"
     )
+
+    add_test(
+        NAME zero-wx-rule-freeze
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_RULE_FREEZE_DOC:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/docs/zero_wx_rule_freeze.md"
+            "-DZERO_WX_SOURCE_ROOT:PATH=${CMAKE_CURRENT_SOURCE_DIR}"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_zero_wx_rule_freeze.cmake"
+    )
 endif()
