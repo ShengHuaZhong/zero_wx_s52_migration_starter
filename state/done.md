@@ -18,3 +18,4 @@
 - 2026-04-20 `016-import-line-assets`: verified that line-style assets are embedded in the already imported `chartsymbols.xml` `<line-styles>` section at the pinned OpenCPN snapshot and documented that boundary in `vendor/opencpn_s57data/README.md`.
 - 2026-04-20 `017-import-pattern-assets`: verified that area-pattern assets are embedded in the already imported `chartsymbols.xml` `<patterns>` section at the pinned OpenCPN snapshot and documented that boundary in `vendor/opencpn_s57data/README.md`.
 - 2026-04-20 `018-asset-path-policy`: added `docs/asset_path_policy.md` to define the canonical asset root, path resolution order, embedded-vs-external asset handling, and layer ownership for future loaders.
+- 2026-04-20 `019-asset-presence-smoke`: added a CTest smoke that verifies the required XML/CSV/PNG assets are present under `vendor/opencpn_s57data/` and that `chartsymbols.xml` still carries the embedded line/pattern markers.

@@ -23,4 +23,13 @@ if(BUILD_TESTING)
             -P
             "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_empty_smoke.cmake"
     )
+
+    add_test(
+        NAME s57data-asset-presence
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_S57DATA_ROOT:PATH=${CMAKE_CURRENT_SOURCE_DIR}/vendor/opencpn_s57data"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_s57data_assets.cmake"
+    )
 endif()
