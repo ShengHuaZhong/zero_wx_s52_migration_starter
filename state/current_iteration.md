@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 025-classify-headless-candidates
+- Current task: 026-classify-rewrite-required
 - Status: pending
