@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 067-display-priority-ir
+- Current task: 068-portrayal-ir-pipeline
 - Status: pending
