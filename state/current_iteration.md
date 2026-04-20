@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 022-lightweight-wx-types-audit
+- Current task: 023-resource-wx-types-audit
 - Status: pending
