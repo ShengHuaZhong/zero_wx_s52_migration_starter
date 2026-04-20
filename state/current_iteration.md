@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 004-coding-rules
+- Current task: 005-build-environment
 - Status: pending
