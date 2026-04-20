@@ -7,6 +7,7 @@ target_sources(s52_core_headless
         csp_entry_audit.cpp
         csp_minimal_bridge.cpp
         chartsymbols_xml_loader.cpp
+        display_priority_selection.cpp
         color_table_loader.cpp
         csv_dictionary_loader.cpp
         feature_attribute_adapter.cpp
@@ -33,6 +34,7 @@ target_sources(s52_core_headless
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/csp_entry_audit.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/csp_minimal_bridge.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/csv_dictionary_loader.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/display_priority_selection.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/feature_attribute_adapter.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/headless_core_init.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/line_portrayal_selection.h"

@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 061-display-priority-selection
+- Current task: 062-instruction-ir-schema
 - Status: pending
