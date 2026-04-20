@@ -23,3 +23,4 @@
 - 2026-04-20 `021-wx-include-audit`: added `docs/wx_include_audit.md`, recording 63 direct `wx/*` include hits across 17 candidate files and summarizing the per-file and per-header concentrations that drive the next wx dependency audits.
 - 2026-04-20 `022-lightweight-wx-types-audit`: added `docs/lightweight_wx_types_audit.md`, recording 899 case-sensitive hits for lightweight wx value types and identifying the file hotspots that will drive neutral string/color/geometry replacement tasks.
 - 2026-04-20 `023-resource-wx-types-audit`: added `docs/resource_wx_types_audit.md`, recording 117 resource-layer wx type hits and identifying the bitmap/image/font/config hotspots that will require project-owned loaders and descriptors.
+- 2026-04-20 `024-ui-host-wx-types-audit`: added `docs/ui_host_wx_types_audit.md`, recording 121 UI/host wx type hits and identifying the `wxDC` / `wxGCDC` / `wxGLContext` / `glChartCanvas` hotspots that block direct headless extraction.

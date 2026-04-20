@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 024-ui-host-wx-types-audit
+- Current task: 025-classify-headless-candidates
 - Status: pending
