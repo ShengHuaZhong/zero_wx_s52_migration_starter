@@ -134,6 +134,10 @@ if(BUILD_TESTING)
         test/chart_runtime_runtime_palette_colors_smoke.cpp
     )
 
+    add_executable(chart_runtime_runtime_render_frame_smoke
+        test/chart_runtime_runtime_render_frame_smoke.cpp
+    )
+
     add_executable(chart_runtime_point_symbol_atlas_loader_smoke
         test/chart_runtime_point_symbol_atlas_loader_smoke.cpp
     )
@@ -298,6 +302,12 @@ if(BUILD_TESTING)
     target_link_libraries(chart_runtime_runtime_palette_colors_smoke
         PRIVATE
             marine_chart::chart_runtime
+    )
+
+    target_link_libraries(chart_runtime_runtime_render_frame_smoke
+        PRIVATE
+            marine_chart::chart_runtime
+            marine_chart::s52_core_headless
     )
 
     target_link_libraries(chart_runtime_point_symbol_atlas_loader_smoke
@@ -566,6 +576,14 @@ if(BUILD_TESTING)
         COMMAND chart_runtime_runtime_palette_colors_smoke
     )
     set_tests_properties(chart-runtime-runtime-palette-colors-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+
+    add_test(
+        NAME chart-runtime-runtime-render-frame-smoke
+        COMMAND chart_runtime_runtime_render_frame_smoke
+    )
+    set_tests_properties(chart-runtime-runtime-render-frame-smoke PROPERTIES
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 
