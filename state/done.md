@@ -68,3 +68,4 @@
 - 2026-04-20 `066-text-rule-ir`: added the runtime-owned `TextRuleIR` payload type in `chart_runtime`, representing `TX` and `TE` rule records on top of the shared `InstructionIR` envelope with a dedicated runtime smoke test.
 - 2026-04-20 `067-display-priority-ir`: added the runtime-owned `DisplayPriorityIR` payload type in `chart_runtime`, carrying stable priority groups and sort ranks on top of the shared `InstructionIR` envelope with a dedicated runtime smoke test.
 - 2026-04-20 `068-portrayal-ir-pipeline`: added the headless `feature -> project-owned portrayal IR` pipeline, generating `chart_runtime::FeaturePortrayalIR` bundles from the existing conservative point/line/area/text/display-priority selectors with a dedicated cross-layer smoke test.
+- 2026-04-20 `069-ir-debug-dump`: added deterministic debug-dump support for `chart_runtime::FeaturePortrayalIR`, making the project-owned portrayal IR easy to inspect in tests and later diagnostics.

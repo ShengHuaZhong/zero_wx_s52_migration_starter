@@ -9,6 +9,7 @@ target_sources(chart_runtime
         instruction_ir.cpp
         line_style_ir.cpp
         point_symbol_ir.cpp
+        portrayal_ir_debug_dump.cpp
         text_rule_ir.cpp
     PUBLIC
         FILE_SET HEADERS
@@ -20,6 +21,7 @@ target_sources(chart_runtime
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/instruction_ir.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/line_style_ir.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/point_symbol_ir.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/portrayal_ir_debug_dump.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/text_rule_ir.h"
 )
 
