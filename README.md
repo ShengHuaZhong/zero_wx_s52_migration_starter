@@ -19,6 +19,22 @@
 - 这里不包含 OpenCPN 代码或其资产本体
 - 这里只是迁移规划与任务骨架
 
+## Repository skeleton
+
+当前仓库骨架按照零 wx 迁移项目的最小边界预留了以下目录：
+
+- `docs/`：架构、编码规则、构建环境与测试策略文档
+- `include/`：稳定公共接口占位
+- `src/s52_core_headless/`：headless S-52 portrayal core 占位
+- `src/runtime/`：runtime 中心层占位
+- `src/qt_host/`：Qt host 层占位
+- `skills/`：任务执行技能说明
+- `tasks/`：顺序任务定义
+- `state/`：当前迭代、已完成项与阻塞项状态
+- `test/`：测试与 smoke 占位
+- `third_party/`：上游代码与许可证隔离区
+- `vendor/`：上游资产落库区
+
 
 ## Added constraints
 - `docs/build_environment.md`
