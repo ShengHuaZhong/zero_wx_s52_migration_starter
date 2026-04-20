@@ -1,4 +1,5 @@
 #include "marine_chart/s52_core_headless/neutral_config_loader.h"
+#include "marine_chart/s52_core_headless/neutral_font_descriptor.h"
 #include "marine_chart/s52_core_headless/neutral_image_metadata.h"
 #include "marine_chart/s52_core_headless/module.h"
 
@@ -110,6 +111,36 @@ int main() {
 
     if(image_metadata.is_empty()) {
         return 22;
+    }
+
+    const auto font_descriptor = marine_chart::s52_core_headless::make_neutral_font_descriptor(
+        "Noto Sans",
+        12,
+        marine_chart::s52_core_headless::FontWeight::bold,
+        marine_chart::s52_core_headless::FontSlant::italic,
+        true);
+    if(font_descriptor.family_name != "Noto Sans") {
+        return 23;
+    }
+
+    if(font_descriptor.point_size != 12) {
+        return 24;
+    }
+
+    if(font_descriptor.weight != marine_chart::s52_core_headless::FontWeight::bold) {
+        return 25;
+    }
+
+    if(font_descriptor.slant != marine_chart::s52_core_headless::FontSlant::italic) {
+        return 26;
+    }
+
+    if(!font_descriptor.underline) {
+        return 27;
+    }
+
+    if(!font_descriptor.is_valid()) {
+        return 28;
     }
 
     return 0;

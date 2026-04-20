@@ -12,6 +12,7 @@ target_sources(s52_core_headless
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_color.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_config_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_containers.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_font_descriptor.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_geometry.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_image_metadata.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_string.h"
