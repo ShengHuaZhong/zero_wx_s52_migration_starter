@@ -9,6 +9,23 @@ set(ZERO_WX_EMPTY_SMOKE_STAMP "${CMAKE_BINARY_DIR}/empty-smoke.stamp")
 add_subdirectory(src/runtime)
 add_subdirectory(src/s52_core_headless)
 
+set(ZERO_WX_ENABLE_QT_HOST ON CACHE BOOL "Build the Qt host module when Qt6 Widgets is available")
+if(ZERO_WX_ENABLE_QT_HOST)
+    find_package(
+        Qt6 6.8
+        COMPONENTS Widgets
+        QUIET
+        PATHS "$ENV{QT_ROOT}"
+        PATH_SUFFIXES lib/cmake/Qt6
+    )
+
+    if(Qt6_FOUND)
+        add_subdirectory(src/qt_host)
+    else()
+        message(STATUS "Qt6 Widgets not found; skipping chart_qt_host")
+    endif()
+endif()
+
 add_custom_target(empty_smoke ALL
     COMMAND "${CMAKE_COMMAND}" -E echo "Running empty smoke build"
     COMMAND "${CMAKE_COMMAND}" -E touch "${ZERO_WX_EMPTY_SMOKE_STAMP}"

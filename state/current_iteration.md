@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 084-qt-host-widget
+- Current task: 085-standalone-open-chart
 - Status: pending
