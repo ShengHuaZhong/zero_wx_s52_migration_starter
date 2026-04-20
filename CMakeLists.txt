@@ -78,6 +78,10 @@ if(BUILD_TESTING)
         test/s52_core_headless_portrayal_ir_pipeline_smoke.cpp
     )
 
+    add_executable(s52_core_headless_rule_engine_smoke
+        test/s52_core_headless_rule_engine_smoke.cpp
+    )
+
     add_executable(chart_runtime_instruction_ir_smoke
         test/chart_runtime_instruction_ir_smoke.cpp
     )
@@ -177,6 +181,11 @@ if(BUILD_TESTING)
     )
 
     target_link_libraries(s52_core_headless_portrayal_ir_pipeline_smoke
+        PRIVATE
+            marine_chart::s52_core_headless
+    )
+
+    target_link_libraries(s52_core_headless_rule_engine_smoke
         PRIVATE
             marine_chart::s52_core_headless
     )
@@ -342,6 +351,14 @@ if(BUILD_TESTING)
         COMMAND s52_core_headless_portrayal_ir_pipeline_smoke
     )
     set_tests_properties(s52-core-headless-portrayal-ir-pipeline-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+
+    add_test(
+        NAME s52-core-headless-rule-engine-smoke
+        COMMAND s52_core_headless_rule_engine_smoke
+    )
+    set_tests_properties(s52-core-headless-rule-engine-smoke PROPERTIES
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 

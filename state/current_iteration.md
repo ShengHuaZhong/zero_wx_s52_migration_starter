@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 070-rule-engine-smoke
+- Current task: 071-runtime-ir-ingestion
 - Status: pending
