@@ -10,10 +10,11 @@ namespace marine_chart::s52_core_headless {
 
 struct PaletteDefinition final {
     NeutralString name;
+    NeutralString graphics_file_name;
     NeutralMap<NeutralString, NeutralColor> entries;
 
     [[nodiscard]] bool empty() const noexcept {
-        return entries.empty();
+        return name.empty() || graphics_file_name.empty() || entries.empty();
     }
 
     bool operator==(const PaletteDefinition&) const noexcept = default;

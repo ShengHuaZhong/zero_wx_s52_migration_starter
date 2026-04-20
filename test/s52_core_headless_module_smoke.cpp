@@ -1,5 +1,6 @@
 #include "marine_chart/s52_core_headless/asset_catalog_types.h"
 #include "marine_chart/s52_core_headless/chartsymbols_xml_loader.h"
+#include "marine_chart/s52_core_headless/color_table_loader.h"
 #include "marine_chart/s52_core_headless/csv_dictionary_loader.h"
 #include "marine_chart/s52_core_headless/neutral_config_loader.h"
 #include "marine_chart/s52_core_headless/neutral_font_descriptor.h"
@@ -150,6 +151,7 @@ int main() {
 
     marine_chart::s52_core_headless::PaletteDefinition day_palette;
     day_palette.name = "DAY";
+    day_palette.graphics_file_name = "rastersymbols-day.png";
     day_palette.entries.emplace("CHBLK", marine_chart::s52_core_headless::make_neutral_color(18, 18, 18));
     asset_catalogs.palettes.palettes.emplace(day_palette.name, day_palette);
 
@@ -270,6 +272,30 @@ int main() {
 
     if(!found_beacon_cardinal) {
         return 47;
+    }
+
+    const auto color_tables =
+        marine_chart::s52_core_headless::load_color_table_catalog_from_asset_root("vendor/opencpn_s57data");
+    if(!color_tables.has_value() || color_tables->empty()) {
+        return 48;
+    }
+
+    const auto day_bright = color_tables->palettes.find("DAY_BRIGHT");
+    if(day_bright == color_tables->palettes.end()) {
+        return 49;
+    }
+
+    if(day_bright->second.graphics_file_name != "rastersymbols-day.png") {
+        return 50;
+    }
+
+    const auto chblk = day_bright->second.entries.find("CHBLK");
+    if(chblk == day_bright->second.entries.end()) {
+        return 51;
+    }
+
+    if(chblk->second != marine_chart::s52_core_headless::make_neutral_color(7, 7, 7)) {
+        return 52;
     }
 
     return 0;

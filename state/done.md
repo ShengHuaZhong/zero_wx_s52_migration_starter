@@ -44,3 +44,4 @@
 - 2026-04-20 `042-asset-catalog-types`: added the project-owned palette, symbol, line-style, pattern, and aggregate asset catalog value types for `s52_core_headless`, and exercised them in the module smoke with a minimal sample catalog.
 - 2026-04-20 `043-xml-loader-headless`: added the headless `chartsymbols.xml` loader for `s52_core_headless`, including asset-root path resolution, file reading, and required section-marker validation for color tables, line styles, patterns, and symbols.
 - 2026-04-20 `044-csv-dictionary-loader`: added the headless CSV dictionary loader for `s52_core_headless`, including generic CSV row parsing plus dedicated attribute/object-class dictionary entrypoints that read the vendored S-57 dictionaries.
+- 2026-04-20 `045-color-table-loader`: added the headless color-table loader for `s52_core_headless`, extracting palette names, associated graphics files, and RGB entries from the vendored `chartsymbols.xml` document.
