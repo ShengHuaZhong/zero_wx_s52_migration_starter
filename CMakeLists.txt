@@ -32,4 +32,13 @@ if(BUILD_TESTING)
             -P
             "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_s57data_assets.cmake"
     )
+
+    add_test(
+        NAME headless-boundary-design-doc
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_HEADLESS_BOUNDARY_DOC:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/docs/headless_boundary_design.md"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_headless_boundary_design.cmake"
+    )
 endif()

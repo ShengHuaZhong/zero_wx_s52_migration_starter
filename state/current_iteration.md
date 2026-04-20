@@ -1,5 +1,5 @@
 # current_iteration
 
-- Current phase: A
-- Current task: 028-headless-boundary-design
+- Current phase: D
+- Current task: 029-zero-wx-rule-freeze
 - Status: pending
