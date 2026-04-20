@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 073-point-symbol-atlas-loader
+- Current task: 074-point-renderer-from-ir
 - Status: pending
