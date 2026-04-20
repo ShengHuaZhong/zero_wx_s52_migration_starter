@@ -67,4 +67,13 @@ if(BUILD_TESTING)
             -P
             "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_zero_wx_rule_freeze.cmake"
     )
+
+    add_test(
+        NAME remove-wxdc-paths
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_SOURCE_ROOT:PATH=${CMAKE_CURRENT_SOURCE_DIR}"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_no_wxdc_paths.cmake"
+    )
 endif()

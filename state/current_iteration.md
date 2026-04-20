@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 038-remove-wxdc-paths
+- Current task: 039-remove-wxgcdc-paths
 - Status: pending

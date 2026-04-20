@@ -37,3 +37,4 @@
 - 2026-04-20 `035-neutral-config-loader`: added a project-owned text config loader and lookup API for `s52_core_headless`, providing the first neutral replacement surface for future `wxFileConfig` usage.
 - 2026-04-20 `036-neutral-image-metadata`: added the project-owned image metadata surface for `s52_core_headless`, replacing raw framework image object dependencies with stable resource-name/path/size/format fields.
 - 2026-04-20 `037-neutral-font-descriptor`: added the project-owned font descriptor surface for `s52_core_headless`, replacing framework font objects with stable family/size/weight/slant decoration fields.
+- 2026-04-20 `038-remove-wxdc-paths`: verified that project-owned `include/` and `src/` already contain zero `wxDC` drawing interfaces, documented that status in `docs/wxdc_path_removal.md`, and added a targeted CTest guard to keep old DC render entrypoints from re-entering the codebase.
