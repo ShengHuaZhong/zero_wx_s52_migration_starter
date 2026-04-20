@@ -31,13 +31,19 @@ struct PaletteCatalog final {
 };
 
 struct SymbolDefinition final {
+    NeutralString rcid;
     NeutralString name;
-    NeutralImageMetadata atlas;
+    NeutralString description;
     NeutralRect source_rect;
     NeutralPoint pivot;
+    NeutralString color_reference;
 
     [[nodiscard]] bool empty() const noexcept {
-        return name.empty() || atlas.is_empty() || source_rect.is_empty();
+        return rcid.empty()
+            || name.empty()
+            || description.empty()
+            || source_rect.is_empty()
+            || color_reference.empty();
     }
 
     bool operator==(const SymbolDefinition&) const noexcept = default;

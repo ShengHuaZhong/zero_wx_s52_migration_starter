@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 046-symbol-catalog-loader
+- Current task: 047-line-style-loader
 - Status: pending

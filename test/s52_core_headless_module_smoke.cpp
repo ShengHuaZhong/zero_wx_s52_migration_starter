@@ -6,6 +6,7 @@
 #include "marine_chart/s52_core_headless/neutral_font_descriptor.h"
 #include "marine_chart/s52_core_headless/neutral_image_metadata.h"
 #include "marine_chart/s52_core_headless/module.h"
+#include "marine_chart/s52_core_headless/symbol_catalog_loader.h"
 
 #include <string_view>
 
@@ -156,14 +157,12 @@ int main() {
     asset_catalogs.palettes.palettes.emplace(day_palette.name, day_palette);
 
     marine_chart::s52_core_headless::SymbolDefinition symbol_definition;
+    symbol_definition.rcid = "2035";
     symbol_definition.name = "BOYLAT";
-    symbol_definition.atlas = marine_chart::s52_core_headless::make_neutral_image_metadata(
-        "symbol-atlas",
-        "vendor/opencpn_s57data/rastersymbols-day.png",
-        512,
-        512);
+    symbol_definition.description = "sample point symbol";
     symbol_definition.source_rect = marine_chart::s52_core_headless::make_neutral_rect(0, 0, 32, 32);
     symbol_definition.pivot = marine_chart::s52_core_headless::make_neutral_point(16, 16);
+    symbol_definition.color_reference = "CHBLK";
     asset_catalogs.symbols.symbols.emplace(symbol_definition.name, symbol_definition);
 
     marine_chart::s52_core_headless::LineStyleDefinition line_style_definition;
@@ -296,6 +295,33 @@ int main() {
 
     if(chblk->second != marine_chart::s52_core_headless::make_neutral_color(7, 7, 7)) {
         return 52;
+    }
+
+    const auto symbol_catalog =
+        marine_chart::s52_core_headless::load_symbol_catalog_from_asset_root("vendor/opencpn_s57data");
+    if(!symbol_catalog.has_value() || symbol_catalog->empty()) {
+        return 53;
+    }
+
+    const auto achare02 = symbol_catalog->symbols.find("ACHARE02");
+    if(achare02 == symbol_catalog->symbols.end()) {
+        return 54;
+    }
+
+    if(achare02->second.rcid != "2035") {
+        return 55;
+    }
+
+    if(achare02->second.source_rect != marine_chart::s52_core_headless::make_neutral_rect(10, 10, 13, 16)) {
+        return 56;
+    }
+
+    if(achare02->second.pivot != marine_chart::s52_core_headless::make_neutral_point(6, 8)) {
+        return 57;
+    }
+
+    if(achare02->second.color_reference != "ACHMGD") {
+        return 58;
     }
 
     return 0;
