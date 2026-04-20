@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 051-lookup-index-build
+- Current task: 052-mariner-settings-model
 - Status: pending

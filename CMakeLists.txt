@@ -29,6 +29,10 @@ if(BUILD_TESTING)
         test/s52_core_headless_lookup_raw_smoke.cpp
     )
 
+    add_executable(s52_core_headless_lookup_index_smoke
+        test/s52_core_headless_lookup_index_smoke.cpp
+    )
+
     target_link_libraries(s52_core_headless_module_smoke
         PRIVATE
             marine_chart::s52_core_headless
@@ -40,6 +44,11 @@ if(BUILD_TESTING)
     )
 
     target_link_libraries(s52_core_headless_lookup_raw_smoke
+        PRIVATE
+            marine_chart::s52_core_headless
+    )
+
+    target_link_libraries(s52_core_headless_lookup_index_smoke
         PRIVATE
             marine_chart::s52_core_headless
     )
@@ -74,6 +83,14 @@ if(BUILD_TESTING)
         COMMAND s52_core_headless_lookup_raw_smoke
     )
     set_tests_properties(s52-core-headless-lookup-raw-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+
+    add_test(
+        NAME s52-core-headless-lookup-index-smoke
+        COMMAND s52_core_headless_lookup_index_smoke
+    )
+    set_tests_properties(s52-core-headless-lookup-index-smoke PROPERTIES
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 
