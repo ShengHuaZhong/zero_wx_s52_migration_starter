@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 006-local-build-scripts
+- Current task: 007-state-files-bootstrap
 - Status: pending
