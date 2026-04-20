@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.29)
 
-project(zero_wx_s52_migration_starter VERSION 0.1.0 LANGUAGES NONE)
+project(zero_wx_s52_migration_starter VERSION 0.1.0 LANGUAGES CXX)
 
 include(CTest)
 
 set(ZERO_WX_EMPTY_SMOKE_STAMP "${CMAKE_BINARY_DIR}/empty-smoke.stamp")
+
+add_subdirectory(src/s52_core_headless)
 
 add_custom_target(empty_smoke ALL
     COMMAND "${CMAKE_COMMAND}" -E echo "Running empty smoke build"
@@ -15,6 +17,15 @@ add_custom_target(empty_smoke ALL
 )
 
 if(BUILD_TESTING)
+    add_executable(s52_core_headless_module_smoke
+        test/s52_core_headless_module_smoke.cpp
+    )
+
+    target_link_libraries(s52_core_headless_module_smoke
+        PRIVATE
+            marine_chart::s52_core_headless
+    )
+
     add_test(
         NAME empty-smoke
         COMMAND
@@ -22,6 +33,11 @@ if(BUILD_TESTING)
             "-DZERO_WX_EMPTY_SMOKE_STAMP:FILEPATH=${ZERO_WX_EMPTY_SMOKE_STAMP}"
             -P
             "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_empty_smoke.cmake"
+    )
+
+    add_test(
+        NAME s52-core-headless-module-smoke
+        COMMAND s52_core_headless_module_smoke
     )
 
     add_test(
