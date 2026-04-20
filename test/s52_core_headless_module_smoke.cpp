@@ -22,5 +22,14 @@ int main() {
         return 4;
     }
 
+    const auto expected_color = marine_chart::s52_core_headless::make_neutral_color(24, 64, 128);
+    if(module_info.accent_color != expected_color) {
+        return 5;
+    }
+
+    if(!module_info.accent_color.is_opaque()) {
+        return 6;
+    }
+
     return 0;
 }

@@ -31,3 +31,4 @@
 - 2026-04-20 `029-zero-wx-rule-freeze`: added `docs/zero_wx_rule_freeze.md` and a CTest smoke that freeze the forbidden wx include/type/host markers and reject new `wxWidgets` build dependencies in project-owned source and root CMake.
 - 2026-04-20 `030-create-s52-core-headless-module`: switched the project to C++, created the first `s52_core_headless` static library target plus a narrow public module header, and added a link smoke that proves the new zero-wx module target builds and links.
 - 2026-04-20 `031-neutral-string-type`: added the project-owned `NeutralString` / `NeutralStringView` header for `s52_core_headless` and moved the module smoke path onto that neutral string surface instead of raw standard-view fields.
+- 2026-04-20 `032-neutral-color-type`: added the project-owned `NeutralColor` value type for `s52_core_headless` and moved the module smoke path onto that neutral RGBA surface instead of any framework-owned color type.
