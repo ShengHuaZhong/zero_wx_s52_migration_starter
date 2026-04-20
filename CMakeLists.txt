@@ -21,6 +21,7 @@ if(ZERO_WX_ENABLE_QT_HOST)
 
     if(Qt6_FOUND)
         add_subdirectory(src/qt_host)
+        add_subdirectory(apps)
     else()
         message(STATUS "Qt6 Widgets not found; skipping chart_qt_host")
     endif()
