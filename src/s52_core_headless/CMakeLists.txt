@@ -26,6 +26,7 @@ target_sources(s52_core_headless
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/line_style_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/lookup_index.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/lookup_raw_loader.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/mariner_settings.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_color.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_config_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_containers.h"
