@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 026-classify-rewrite-required
+- Current task: 027-classify-must-drop
 - Status: pending
