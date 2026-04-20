@@ -42,7 +42,9 @@ Why this snapshot:
 
 ## Current repository state
 
-- No upstream files from this snapshot have been imported yet
+- Imported from this snapshot so far:
+  - `vendor/opencpn_s57data/chartsymbols.xml`
+  - `vendor/opencpn_s57data/s57attributes.csv`
 - This record only establishes the source, version, and commit/tag boundary
 - Any future vendored payload must remain consistent with
   `third_party/LICENSES/upstream-license-audit.md`
