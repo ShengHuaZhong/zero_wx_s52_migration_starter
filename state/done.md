@@ -17,3 +17,4 @@
 - 2026-04-20 `015-import-symbol-assets`: imported the three pinned `rastersymbols-*.png` symbol atlases referenced by `chartsymbols.xml` into `vendor/opencpn_s57data/` and refreshed the provenance note to reflect the imported asset set.
 - 2026-04-20 `016-import-line-assets`: verified that line-style assets are embedded in the already imported `chartsymbols.xml` `<line-styles>` section at the pinned OpenCPN snapshot and documented that boundary in `vendor/opencpn_s57data/README.md`.
 - 2026-04-20 `017-import-pattern-assets`: verified that area-pattern assets are embedded in the already imported `chartsymbols.xml` `<patterns>` section at the pinned OpenCPN snapshot and documented that boundary in `vendor/opencpn_s57data/README.md`.
+- 2026-04-20 `018-asset-path-policy`: added `docs/asset_path_policy.md` to define the canonical asset root, path resolution order, embedded-vs-external asset handling, and layer ownership for future loaders.

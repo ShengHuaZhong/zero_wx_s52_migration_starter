@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: A
-- Current task: 018-asset-path-policy
+- Current task: 019-asset-presence-smoke
 - Status: pending
