@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 066-text-rule-ir
+- Current task: 067-display-priority-ir
 - Status: pending
