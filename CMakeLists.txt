@@ -65,6 +65,10 @@ if(BUILD_TESTING)
         test/s52_core_headless_area_portrayal_selection_smoke.cpp
     )
 
+    add_executable(s52_core_headless_text_rule_selection_smoke
+        test/s52_core_headless_text_rule_selection_smoke.cpp
+    )
+
     target_link_libraries(s52_core_headless_module_smoke
         PRIVATE
             marine_chart::s52_core_headless
@@ -121,6 +125,11 @@ if(BUILD_TESTING)
     )
 
     target_link_libraries(s52_core_headless_area_portrayal_selection_smoke
+        PRIVATE
+            marine_chart::s52_core_headless
+    )
+
+    target_link_libraries(s52_core_headless_text_rule_selection_smoke
         PRIVATE
             marine_chart::s52_core_headless
     )
@@ -227,6 +236,14 @@ if(BUILD_TESTING)
         COMMAND s52_core_headless_area_portrayal_selection_smoke
     )
     set_tests_properties(s52-core-headless-area-portrayal-selection-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+
+    add_test(
+        NAME s52-core-headless-text-rule-selection-smoke
+        COMMAND s52_core_headless_text_rule_selection_smoke
+    )
+    set_tests_properties(s52-core-headless-text-rule-selection-smoke PROPERTIES
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 

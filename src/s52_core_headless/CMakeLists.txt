@@ -21,6 +21,7 @@ target_sources(s52_core_headless
         pattern_catalog_loader.cpp
         point_portrayal_selection.cpp
         symbol_catalog_loader.cpp
+        text_rule_selection.cpp
     PUBLIC
         FILE_SET HEADERS
         BASE_DIRS "${PROJECT_SOURCE_DIR}/include"
@@ -51,6 +52,7 @@ target_sources(s52_core_headless
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/module.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/pattern_catalog_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/symbol_catalog_loader.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/text_rule_selection.h"
 )
 
 target_compile_features(s52_core_headless PUBLIC cxx_std_20)
