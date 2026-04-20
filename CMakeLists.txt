@@ -6,6 +6,7 @@ include(CTest)
 
 set(ZERO_WX_EMPTY_SMOKE_STAMP "${CMAKE_BINARY_DIR}/empty-smoke.stamp")
 
+add_subdirectory(src/runtime)
 add_subdirectory(src/s52_core_headless)
 
 add_custom_target(empty_smoke ALL
@@ -71,6 +72,10 @@ if(BUILD_TESTING)
 
     add_executable(s52_core_headless_display_priority_selection_smoke
         test/s52_core_headless_display_priority_selection_smoke.cpp
+    )
+
+    add_executable(chart_runtime_instruction_ir_smoke
+        test/chart_runtime_instruction_ir_smoke.cpp
     )
 
     target_link_libraries(s52_core_headless_module_smoke
@@ -141,6 +146,11 @@ if(BUILD_TESTING)
     target_link_libraries(s52_core_headless_display_priority_selection_smoke
         PRIVATE
             marine_chart::s52_core_headless
+    )
+
+    target_link_libraries(chart_runtime_instruction_ir_smoke
+        PRIVATE
+            marine_chart::chart_runtime
     )
 
     add_test(
@@ -261,6 +271,14 @@ if(BUILD_TESTING)
         COMMAND s52_core_headless_display_priority_selection_smoke
     )
     set_tests_properties(s52-core-headless-display-priority-selection-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+
+    add_test(
+        NAME chart-runtime-instruction-ir-smoke
+        COMMAND chart_runtime_instruction_ir_smoke
+    )
+    set_tests_properties(chart-runtime-instruction-ir-smoke PROPERTIES
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 
