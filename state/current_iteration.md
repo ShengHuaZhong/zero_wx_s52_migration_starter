@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 079-priority-sorter
+- Current task: 080-text-layout-minimal
 - Status: pending

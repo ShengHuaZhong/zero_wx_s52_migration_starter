@@ -118,6 +118,10 @@ if(BUILD_TESTING)
         test/chart_runtime_portrayal_ir_ingestion_smoke.cpp
     )
 
+    add_executable(chart_runtime_priority_sorter_smoke
+        test/chart_runtime_priority_sorter_smoke.cpp
+    )
+
     add_executable(chart_runtime_runtime_palette_colors_smoke
         test/chart_runtime_runtime_palette_colors_smoke.cpp
     )
@@ -264,6 +268,11 @@ if(BUILD_TESTING)
     )
 
     target_link_libraries(chart_runtime_portrayal_ir_ingestion_smoke
+        PRIVATE
+            marine_chart::chart_runtime
+    )
+
+    target_link_libraries(chart_runtime_priority_sorter_smoke
         PRIVATE
             marine_chart::chart_runtime
     )
@@ -507,6 +516,14 @@ if(BUILD_TESTING)
         COMMAND chart_runtime_portrayal_ir_ingestion_smoke
     )
     set_tests_properties(chart-runtime-portrayal-ir-ingestion-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+
+    add_test(
+        NAME chart-runtime-priority-sorter-smoke
+        COMMAND chart_runtime_priority_sorter_smoke
+    )
+    set_tests_properties(chart-runtime-priority-sorter-smoke PROPERTIES
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 

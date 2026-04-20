@@ -8,6 +8,7 @@ target_sources(chart_runtime
         display_priority_ir.cpp
         feature_portrayal_ir.cpp
         instruction_ir.cpp
+        priority_sorter.cpp
         line_style_ir.cpp
         line_style_parser.cpp
         line_renderer.cpp
@@ -37,6 +38,7 @@ target_sources(chart_runtime
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/point_renderer.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/portrayal_ir_debug_dump.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/portrayal_ir_ingestion.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/priority_sorter.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/runtime_palette_colors.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/text_rule_ir.h"
 )
