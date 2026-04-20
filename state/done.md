@@ -71,3 +71,4 @@
 - 2026-04-20 `069-ir-debug-dump`: added deterministic debug-dump support for `chart_runtime::FeaturePortrayalIR`, making the project-owned portrayal IR easy to inspect in tests and later diagnostics.
 - 2026-04-20 `070-rule-engine-smoke`: added a rule-layer end-to-end smoke test that loads real vendored lookup data, runs multiple primitives through the headless portrayal pipeline, and verifies the resulting project-owned IR plus debug output.
 - 2026-04-20 `071-runtime-ir-ingestion`: added the runtime portrayal-ingestion layer in `chart_runtime`, allowing project-owned `FeaturePortrayalIR` bundles to be accumulated into runtime-owned portrayal state with a dedicated runtime smoke test.
+- 2026-04-20 `072-palette-runtime-colors`: added the runtime-owned palette color model and lookup helpers in `chart_runtime`, providing deterministic renderer-facing access to runtime color tokens with a dedicated runtime smoke test.

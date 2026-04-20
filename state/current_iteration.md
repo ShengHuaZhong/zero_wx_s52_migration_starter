@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 072-palette-runtime-colors
+- Current task: 073-point-symbol-atlas-loader
 - Status: pending
