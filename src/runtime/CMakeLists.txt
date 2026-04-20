@@ -10,6 +10,7 @@ target_sources(chart_runtime
         line_style_ir.cpp
         line_style_parser.cpp
         line_renderer.cpp
+        pattern_atlas_loader.cpp
         point_symbol_ir.cpp
         point_symbol_atlas_loader.cpp
         point_renderer.cpp
@@ -28,6 +29,7 @@ target_sources(chart_runtime
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/line_style_ir.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/line_style_parser.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/line_renderer.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/pattern_atlas_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/point_symbol_ir.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/point_symbol_atlas_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/point_renderer.h"
