@@ -9,6 +9,7 @@ target_sources(s52_core_headless
         BASE_DIRS "${PROJECT_SOURCE_DIR}/include"
         FILES
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_color.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_geometry.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_string.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/module.h"
 )

@@ -31,5 +31,24 @@ int main() {
         return 6;
     }
 
+    const auto expected_viewport = marine_chart::s52_core_headless::make_neutral_rect(10, 20, 640, 480);
+    if(module_info.default_viewport != expected_viewport) {
+        return 7;
+    }
+
+    if(!module_info.default_viewport.contains(
+        marine_chart::s52_core_headless::make_neutral_point(100, 100))) {
+        return 8;
+    }
+
+    if(module_info.default_viewport.contains(
+        marine_chart::s52_core_headless::make_neutral_point(0, 0))) {
+        return 9;
+    }
+
+    if(module_info.default_viewport.is_empty()) {
+        return 10;
+    }
+
     return 0;
 }
