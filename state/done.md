@@ -9,3 +9,4 @@
 - 2026-04-20 `007-state-files-bootstrap`: verified that `state/current_iteration.md`, `state/done.md`, and `state/blocked.md` are present and now provide the bootstrap state tracking flow for the task sequence.
 - 2026-04-20 `008-empty-smoke-build`: added the root CMake project, Windows presets, an empty smoke build target, and a CTest check so configure/build/test now pass without introducing Qt or wx dependencies.
 - 2026-04-20 `009-upstream-license-audit`: added an initial audit for the intended OpenCPN code and `s57data` asset families, documenting the GPL-based license posture and the isolation boundaries for future vendoring.
+- 2026-04-20 `010-upstream-provenance-record`: pinned the planned OpenCPN upstream snapshot to release `5.12.4` / tag `Release_5.12.4` / commit `37fd0cddb7334fe489e9f18aa163977a9c5c84f7` for both code and `s57data` asset imports.
