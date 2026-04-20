@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 068-portrayal-ir-pipeline
+- Current task: 069-ir-debug-dump
 - Status: pending

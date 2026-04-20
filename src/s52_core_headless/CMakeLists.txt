@@ -21,6 +21,7 @@ target_sources(s52_core_headless
         module.cpp
         pattern_catalog_loader.cpp
         point_portrayal_selection.cpp
+        portrayal_ir_pipeline.cpp
         symbol_catalog_loader.cpp
         text_rule_selection.cpp
     PUBLIC
@@ -55,6 +56,7 @@ target_sources(s52_core_headless
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/pattern_catalog_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/symbol_catalog_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/text_rule_selection.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/portrayal_ir_pipeline.h"
 )
 
 target_compile_features(s52_core_headless PUBLIC cxx_std_20)
@@ -62,4 +64,9 @@ target_compile_features(s52_core_headless PUBLIC cxx_std_20)
 target_include_directories(s52_core_headless
     PUBLIC
         "${PROJECT_SOURCE_DIR}/include"
+)
+
+target_link_libraries(s52_core_headless
+    PUBLIC
+        marine_chart::chart_runtime
 )

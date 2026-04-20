@@ -5,6 +5,7 @@ target_sources(chart_runtime
     PRIVATE
         area_pattern_ir.cpp
         display_priority_ir.cpp
+        feature_portrayal_ir.cpp
         instruction_ir.cpp
         line_style_ir.cpp
         point_symbol_ir.cpp
@@ -15,6 +16,7 @@ target_sources(chart_runtime
         FILES
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/area_pattern_ir.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/display_priority_ir.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/feature_portrayal_ir.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/instruction_ir.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/line_style_ir.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/point_symbol_ir.h"
