@@ -78,6 +78,10 @@ if(BUILD_TESTING)
         test/chart_runtime_instruction_ir_smoke.cpp
     )
 
+    add_executable(chart_runtime_point_symbol_ir_smoke
+        test/chart_runtime_point_symbol_ir_smoke.cpp
+    )
+
     target_link_libraries(s52_core_headless_module_smoke
         PRIVATE
             marine_chart::s52_core_headless
@@ -149,6 +153,11 @@ if(BUILD_TESTING)
     )
 
     target_link_libraries(chart_runtime_instruction_ir_smoke
+        PRIVATE
+            marine_chart::chart_runtime
+    )
+
+    target_link_libraries(chart_runtime_point_symbol_ir_smoke
         PRIVATE
             marine_chart::chart_runtime
     )
@@ -279,6 +288,14 @@ if(BUILD_TESTING)
         COMMAND chart_runtime_instruction_ir_smoke
     )
     set_tests_properties(chart-runtime-instruction-ir-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+
+    add_test(
+        NAME chart-runtime-point-symbol-ir-smoke
+        COMMAND chart_runtime_point_symbol_ir_smoke
+    )
+    set_tests_properties(chart-runtime-point-symbol-ir-smoke PROPERTIES
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 
