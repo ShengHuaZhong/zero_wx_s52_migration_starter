@@ -3,6 +3,7 @@ add_library(marine_chart::s52_core_headless ALIAS s52_core_headless)
 
 target_sources(s52_core_headless
     PRIVATE
+        area_portrayal_selection.cpp
         csp_entry_audit.cpp
         csp_minimal_bridge.cpp
         chartsymbols_xml_loader.cpp
@@ -24,6 +25,7 @@ target_sources(s52_core_headless
         FILE_SET HEADERS
         BASE_DIRS "${PROJECT_SOURCE_DIR}/include"
         FILES
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/area_portrayal_selection.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/asset_catalog_types.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/chartsymbols_xml_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/color_table_loader.h"

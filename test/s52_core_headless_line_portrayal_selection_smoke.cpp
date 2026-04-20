@@ -28,7 +28,7 @@ int main() {
     const auto depare_selection =
         marine_chart::s52_core_headless::select_line_portrayal(*lookup_index, depare_feature, mariner_settings);
     if(!depare_selection.has_value()
-        || depare_selection->csp_dispatch.procedure != marine_chart::s52_core_headless::CspProcedureId::depare01) {
+        || depare_selection->csp_dispatch.procedure != marine_chart::s52_core_headless::CspProcedureId::depcnt02) {
         return 4;
     }
 
