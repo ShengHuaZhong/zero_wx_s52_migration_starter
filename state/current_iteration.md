@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 054-csp-minimal-bridge
+- Current task: 055-feature-attribute-adapter
 - Status: pending

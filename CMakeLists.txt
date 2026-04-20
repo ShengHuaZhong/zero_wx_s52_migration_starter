@@ -41,6 +41,10 @@ if(BUILD_TESTING)
         test/s52_core_headless_csp_entry_audit_smoke.cpp
     )
 
+    add_executable(s52_core_headless_csp_minimal_bridge_smoke
+        test/s52_core_headless_csp_minimal_bridge_smoke.cpp
+    )
+
     target_link_libraries(s52_core_headless_module_smoke
         PRIVATE
             marine_chart::s52_core_headless
@@ -67,6 +71,11 @@ if(BUILD_TESTING)
     )
 
     target_link_libraries(s52_core_headless_csp_entry_audit_smoke
+        PRIVATE
+            marine_chart::s52_core_headless
+    )
+
+    target_link_libraries(s52_core_headless_csp_minimal_bridge_smoke
         PRIVATE
             marine_chart::s52_core_headless
     )
@@ -125,6 +134,14 @@ if(BUILD_TESTING)
         COMMAND s52_core_headless_csp_entry_audit_smoke
     )
     set_tests_properties(s52-core-headless-csp-entry-audit-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+
+    add_test(
+        NAME s52-core-headless-csp-minimal-bridge-smoke
+        COMMAND s52_core_headless_csp_minimal_bridge_smoke
+    )
+    set_tests_properties(s52-core-headless-csp-minimal-bridge-smoke PROPERTIES
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 

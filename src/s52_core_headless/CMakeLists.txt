@@ -4,6 +4,7 @@ add_library(marine_chart::s52_core_headless ALIAS s52_core_headless)
 target_sources(s52_core_headless
     PRIVATE
         csp_entry_audit.cpp
+        csp_minimal_bridge.cpp
         chartsymbols_xml_loader.cpp
         color_table_loader.cpp
         csv_dictionary_loader.cpp
@@ -23,6 +24,7 @@ target_sources(s52_core_headless
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/chartsymbols_xml_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/color_table_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/csp_entry_audit.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/csp_minimal_bridge.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/csv_dictionary_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/headless_core_init.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/line_style_loader.h"
