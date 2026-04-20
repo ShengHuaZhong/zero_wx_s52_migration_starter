@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 057-point-portrayal-selection
+- Current task: 058-line-portrayal-selection
 - Status: pending
