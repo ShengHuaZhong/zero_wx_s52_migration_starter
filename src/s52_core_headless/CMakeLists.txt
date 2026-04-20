@@ -3,12 +3,14 @@ add_library(marine_chart::s52_core_headless ALIAS s52_core_headless)
 
 target_sources(s52_core_headless
     PRIVATE
+        neutral_config_loader.cpp
         module.cpp
     PUBLIC
         FILE_SET HEADERS
         BASE_DIRS "${PROJECT_SOURCE_DIR}/include"
         FILES
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_color.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_config_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_containers.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_geometry.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_string.h"

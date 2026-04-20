@@ -1,3 +1,4 @@
+#include "marine_chart/s52_core_headless/neutral_config_loader.h"
 #include "marine_chart/s52_core_headless/module.h"
 
 #include <string_view>
@@ -65,6 +66,24 @@ int main() {
 
     if(render_path->second != "rhi") {
         return 14;
+    }
+
+    const auto config = marine_chart::s52_core_headless::load_neutral_config_from_text(
+        "# module defaults\n"
+        "render-path = rhi\n"
+        "role = portrayal-core\n");
+    const auto config_render_path = marine_chart::s52_core_headless::find_config_value(config, "render-path");
+    if(!config_render_path.has_value()) {
+        return 15;
+    }
+
+    if(*config_render_path != "rhi") {
+        return 16;
+    }
+
+    const auto missing_value = marine_chart::s52_core_headless::find_config_value(config, "missing");
+    if(missing_value.has_value()) {
+        return 17;
     }
 
     return 0;
