@@ -106,6 +106,10 @@ if(BUILD_TESTING)
         test/chart_runtime_text_rule_ir_smoke.cpp
     )
 
+    add_executable(chart_runtime_text_layout_smoke
+        test/chart_runtime_text_layout_smoke.cpp
+    )
+
     add_executable(chart_runtime_display_priority_ir_smoke
         test/chart_runtime_display_priority_ir_smoke.cpp
     )
@@ -253,6 +257,11 @@ if(BUILD_TESTING)
     )
 
     target_link_libraries(chart_runtime_text_rule_ir_smoke
+        PRIVATE
+            marine_chart::chart_runtime
+    )
+
+    target_link_libraries(chart_runtime_text_layout_smoke
         PRIVATE
             marine_chart::chart_runtime
     )
@@ -492,6 +501,14 @@ if(BUILD_TESTING)
         COMMAND chart_runtime_text_rule_ir_smoke
     )
     set_tests_properties(chart-runtime-text-rule-ir-smoke PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+
+    add_test(
+        NAME chart-runtime-text-layout-smoke
+        COMMAND chart_runtime_text_layout_smoke
+    )
+    set_tests_properties(chart-runtime-text-layout-smoke PROPERTIES
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     )
 

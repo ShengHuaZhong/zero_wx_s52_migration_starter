@@ -19,6 +19,7 @@ target_sources(chart_runtime
         portrayal_ir_debug_dump.cpp
         portrayal_ir_ingestion.cpp
         runtime_palette_colors.cpp
+        text_layout.cpp
         text_rule_ir.cpp
     PUBLIC
         FILE_SET HEADERS
@@ -40,6 +41,7 @@ target_sources(chart_runtime
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/portrayal_ir_ingestion.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/priority_sorter.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/runtime_palette_colors.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/text_layout.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/chart_runtime/text_rule_ir.h"
 )
 
