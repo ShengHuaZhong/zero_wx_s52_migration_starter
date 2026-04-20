@@ -94,4 +94,13 @@ if(BUILD_TESTING)
             -P
             "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_no_wxglcontext_paths.cmake"
     )
+
+    add_test(
+        NAME drop-old-host-canvas-path
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_SOURCE_ROOT:PATH=${CMAKE_CURRENT_SOURCE_DIR}"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_no_old_host_canvas_paths.cmake"
+    )
 endif()
