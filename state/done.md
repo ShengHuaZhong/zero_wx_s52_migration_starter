@@ -35,3 +35,4 @@
 - 2026-04-20 `033-neutral-geometry-types`: added the project-owned `NeutralPoint`, `NeutralSize`, and `NeutralRect` value types for `s52_core_headless` and moved the module smoke path onto that neutral geometry surface instead of framework geometry structs.
 - 2026-04-20 `034-replace-wx-containers`: added the project-owned STL-backed neutral container aliases for vectors, maps, hash maps, and optionals, and moved the module smoke path onto those container surfaces instead of any wx macro container family.
 - 2026-04-20 `035-neutral-config-loader`: added a project-owned text config loader and lookup API for `s52_core_headless`, providing the first neutral replacement surface for future `wxFileConfig` usage.
+- 2026-04-20 `036-neutral-image-metadata`: added the project-owned image metadata surface for `s52_core_headless`, replacing raw framework image object dependencies with stable resource-name/path/size/format fields.

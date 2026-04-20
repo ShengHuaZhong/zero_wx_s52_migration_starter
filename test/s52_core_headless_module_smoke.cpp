@@ -1,4 +1,5 @@
 #include "marine_chart/s52_core_headless/neutral_config_loader.h"
+#include "marine_chart/s52_core_headless/neutral_image_metadata.h"
 #include "marine_chart/s52_core_headless/module.h"
 
 #include <string_view>
@@ -84,6 +85,31 @@ int main() {
     const auto missing_value = marine_chart::s52_core_headless::find_config_value(config, "missing");
     if(missing_value.has_value()) {
         return 17;
+    }
+
+    const auto image_metadata = marine_chart::s52_core_headless::make_neutral_image_metadata(
+        "symbol-atlas",
+        "vendor/opencpn_s57data/rastersymbols-day.png",
+        512,
+        512);
+    if(image_metadata.resource_name != "symbol-atlas") {
+        return 18;
+    }
+
+    if(image_metadata.pixel_size != marine_chart::s52_core_headless::make_neutral_size(512, 512)) {
+        return 19;
+    }
+
+    if(image_metadata.pixel_format != marine_chart::s52_core_headless::ImagePixelFormat::rgba8) {
+        return 20;
+    }
+
+    if(!image_metadata.has_alpha) {
+        return 21;
+    }
+
+    if(image_metadata.is_empty()) {
+        return 22;
     }
 
     return 0;
