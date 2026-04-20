@@ -8,6 +8,7 @@ target_sources(s52_core_headless
         csv_dictionary_loader.cpp
         headless_core_init.cpp
         line_style_loader.cpp
+        lookup_raw_loader.cpp
         neutral_config_loader.cpp
         module.cpp
         pattern_catalog_loader.cpp
@@ -22,6 +23,7 @@ target_sources(s52_core_headless
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/csv_dictionary_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/headless_core_init.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/line_style_loader.h"
+            "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/lookup_raw_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_color.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_config_loader.h"
             "${PROJECT_SOURCE_DIR}/include/marine_chart/s52_core_headless/neutral_containers.h"

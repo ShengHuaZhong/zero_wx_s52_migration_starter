@@ -1,5 +1,5 @@
 # current_iteration
 
 - Current phase: D
-- Current task: 050-lookup-raw-loader
+- Current task: 051-lookup-index-build
 - Status: pending
