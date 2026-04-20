@@ -1,6 +1,7 @@
 #pragma once
 
 #include "marine_chart/s52_core_headless/neutral_color.h"
+#include "marine_chart/s52_core_headless/neutral_containers.h"
 #include "marine_chart/s52_core_headless/neutral_geometry.h"
 #include "marine_chart/s52_core_headless/neutral_string.h"
 
@@ -11,6 +12,8 @@ struct ModuleInfo final {
     NeutralString responsibility;
     NeutralColor accent_color;
     NeutralRect default_viewport;
+    NeutralVector<NeutralString> capability_tags;
+    NeutralMap<NeutralString, NeutralString> defaults;
 };
 
 [[nodiscard]] ModuleInfo describe_module() noexcept;

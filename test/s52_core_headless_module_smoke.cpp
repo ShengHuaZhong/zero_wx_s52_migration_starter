@@ -50,5 +50,22 @@ int main() {
         return 10;
     }
 
+    if(module_info.capability_tags.size() != 2) {
+        return 11;
+    }
+
+    if(module_info.capability_tags.front() != "headless") {
+        return 12;
+    }
+
+    const auto render_path = module_info.defaults.find("render-path");
+    if(render_path == module_info.defaults.end()) {
+        return 13;
+    }
+
+    if(render_path->second != "rhi") {
+        return 14;
+    }
+
     return 0;
 }
