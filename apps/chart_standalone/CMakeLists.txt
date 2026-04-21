@@ -42,6 +42,8 @@ if(BUILD_TESTING)
                 "QT_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins"
                 "QT_QPA_PLATFORM_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins/platforms"
                 "QT_QPA_PLATFORM=offscreen"
+                "QT_SCALE_FACTOR=1"
+                "QT_ENABLE_HIGHDPI_SCALING=0"
                 $<TARGET_FILE:chart_standalone>
                 --smoke-test
     )
@@ -57,6 +59,8 @@ if(BUILD_TESTING)
                 "QT_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins"
                 "QT_QPA_PLATFORM_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins/platforms"
                 "QT_QPA_PLATFORM=windows"
+                "QT_SCALE_FACTOR=1"
+                "QT_ENABLE_HIGHDPI_SCALING=0"
                 $<TARGET_FILE:chart_standalone>
                 --non-blank-smoke
     )
@@ -72,6 +76,8 @@ if(BUILD_TESTING)
                 "QT_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins"
                 "QT_QPA_PLATFORM_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins/platforms"
                 "QT_QPA_PLATFORM=offscreen"
+                "QT_SCALE_FACTOR=1"
+                "QT_ENABLE_HIGHDPI_SCALING=0"
                 "S57_TESTDATA_ROOT=$ENV{S57_TESTDATA_ROOT}"
                 $<TARGET_FILE:chart_standalone>
                 --real-s57-smoke
@@ -92,11 +98,88 @@ if(BUILD_TESTING)
                 "QT_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins"
                 "QT_QPA_PLATFORM_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins/platforms"
                 "QT_QPA_PLATFORM=windows"
+                "QT_SCALE_FACTOR=1"
+                "QT_ENABLE_HIGHDPI_SCALING=0"
                 $<TARGET_FILE:chart_standalone>
                 --golden-capture
                 "--capture-path=${_zero_wx_chart_standalone_golden_capture_path}"
     )
     set_tests_properties(chart-standalone-golden-capture-smoke PROPERTIES
         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+    )
+
+    set(_zero_wx_scene01_actual_path "${CMAKE_CURRENT_BINARY_DIR}/scene-01-actual.png")
+    add_test(
+        NAME regression-scene-01
+        COMMAND
+            "${CMAKE_COMMAND}" -E env
+                "PATH=${_zero_wx_chart_standalone_test_path}"
+                "QT_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins"
+                "QT_QPA_PLATFORM_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins/platforms"
+                "QT_QPA_PLATFORM=windows"
+                "QT_SCALE_FACTOR=1"
+                "QT_ENABLE_HIGHDPI_SCALING=0"
+                "S57_TESTDATA_ROOT=$ENV{S57_TESTDATA_ROOT}"
+                powershell -NoProfile -ExecutionPolicy Bypass
+                    -File "${PROJECT_SOURCE_DIR}/test/run_regression_scene.ps1"
+                    -ChartExe "$<TARGET_FILE:chart_standalone>"
+                    -SceneIndex 1
+                    -GoldenImage "${PROJECT_SOURCE_DIR}/test/golden/scene-01.png"
+                    -AssetRoot "${PROJECT_SOURCE_DIR}/vendor/opencpn_s57data"
+                    -OutputImage "${_zero_wx_scene01_actual_path}"
+    )
+    set_tests_properties(regression-scene-01 PROPERTIES
+        WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+        SKIP_RETURN_CODE 125
+    )
+
+    set(_zero_wx_scene02_actual_path "${CMAKE_CURRENT_BINARY_DIR}/scene-02-actual.png")
+    add_test(
+        NAME regression-scene-02
+        COMMAND
+            "${CMAKE_COMMAND}" -E env
+                "PATH=${_zero_wx_chart_standalone_test_path}"
+                "QT_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins"
+                "QT_QPA_PLATFORM_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins/platforms"
+                "QT_QPA_PLATFORM=windows"
+                "QT_SCALE_FACTOR=1"
+                "QT_ENABLE_HIGHDPI_SCALING=0"
+                "S57_TESTDATA_ROOT=$ENV{S57_TESTDATA_ROOT}"
+                powershell -NoProfile -ExecutionPolicy Bypass
+                    -File "${PROJECT_SOURCE_DIR}/test/run_regression_scene.ps1"
+                    -ChartExe "$<TARGET_FILE:chart_standalone>"
+                    -SceneIndex 2
+                    -GoldenImage "${PROJECT_SOURCE_DIR}/test/golden/scene-02.png"
+                    -AssetRoot "${PROJECT_SOURCE_DIR}/vendor/opencpn_s57data"
+                    -OutputImage "${_zero_wx_scene02_actual_path}"
+    )
+    set_tests_properties(regression-scene-02 PROPERTIES
+        WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+        SKIP_RETURN_CODE 125
+    )
+
+    set(_zero_wx_scene03_actual_path "${CMAKE_CURRENT_BINARY_DIR}/scene-03-actual.png")
+    add_test(
+        NAME regression-scene-03
+        COMMAND
+            "${CMAKE_COMMAND}" -E env
+                "PATH=${_zero_wx_chart_standalone_test_path}"
+                "QT_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins"
+                "QT_QPA_PLATFORM_PLUGIN_PATH=$<TARGET_FILE_DIR:Qt6::Core>/../plugins/platforms"
+                "QT_QPA_PLATFORM=windows"
+                "QT_SCALE_FACTOR=1"
+                "QT_ENABLE_HIGHDPI_SCALING=0"
+                "S57_TESTDATA_ROOT=$ENV{S57_TESTDATA_ROOT}"
+                powershell -NoProfile -ExecutionPolicy Bypass
+                    -File "${PROJECT_SOURCE_DIR}/test/run_regression_scene.ps1"
+                    -ChartExe "$<TARGET_FILE:chart_standalone>"
+                    -SceneIndex 3
+                    -GoldenImage "${PROJECT_SOURCE_DIR}/test/golden/scene-03.png"
+                    -AssetRoot "${PROJECT_SOURCE_DIR}/vendor/opencpn_s57data"
+                    -OutputImage "${_zero_wx_scene03_actual_path}"
+    )
+    set_tests_properties(regression-scene-03 PROPERTIES
+        WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+        SKIP_RETURN_CODE 125
     )
 endif()

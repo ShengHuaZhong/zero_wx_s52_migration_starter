@@ -724,6 +724,71 @@ if(BUILD_TESTING)
     )
 
     add_test(
+        NAME zero-wx-source-verification
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_SOURCE_ROOT:PATH=${CMAKE_CURRENT_SOURCE_DIR}"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_zero_wx_source.cmake"
+    )
+
+    set(_zero_wx_build_verification_executables)
+    if(TARGET chart_standalone)
+        list(APPEND _zero_wx_build_verification_executables "$<TARGET_FILE:chart_standalone>")
+    endif()
+    if(TARGET chart_qt_host_widget_smoke)
+        list(APPEND _zero_wx_build_verification_executables "$<TARGET_FILE:chart_qt_host_widget_smoke>")
+    endif()
+
+    add_test(
+        NAME zero-wx-build-verification
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_SOURCE_ROOT:PATH=${CMAKE_CURRENT_SOURCE_DIR}"
+            "-DZERO_WX_BUILD_ROOT:PATH=${CMAKE_BINARY_DIR}"
+            "-DZERO_WX_EXECUTABLES:STRING=${_zero_wx_build_verification_executables}"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_zero_wx_build.cmake"
+    )
+
+    add_test(
+        NAME api-cleanup-freeze
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_SOURCE_ROOT:PATH=${CMAKE_CURRENT_SOURCE_DIR}"
+            "-DZERO_WX_PUBLIC_API_MANIFEST:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/docs/public_api_freeze_manifest.txt"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_public_api_freeze.cmake"
+    )
+
+    add_test(
+        NAME architecture-doc-final
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_ARCHITECTURE_FINAL_DOC:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/docs/architecture_final.md"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_architecture_final_doc.cmake"
+    )
+
+    add_test(
+        NAME migration-report-doc
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_MIGRATION_REPORT_DOC:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/docs/migration_report.md"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_migration_report_doc.cmake"
+    )
+
+    add_test(
+        NAME migration-complete-verification-doc
+        COMMAND
+            "${CMAKE_COMMAND}"
+            "-DZERO_WX_MIGRATION_COMPLETE_VERIFICATION_DOC:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/docs/migration_complete_verification.md"
+            -P
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/verify_migration_complete_verification_doc.cmake"
+    )
+
+    add_test(
         NAME zero-wx-rule-freeze
         COMMAND
             "${CMAKE_COMMAND}"

@@ -163,9 +163,11 @@ int main(int argc, char** argv) {
     const std::string s57_root = parser.value(s57_root_option).toStdString();
     const std::string palette_name = parser.value(palette_option).toStdString();
     const QString capture_path = parser.value(capture_path_option);
+    const bool run_real_s57_smoke = parser.isSet(real_s57_smoke_option);
+    const bool run_golden_capture = parser.isSet(golden_capture_option);
 
     std::optional<marine_chart::chart_runtime::OpenChartResult> open_chart_result;
-    if(parser.isSet(real_s57_smoke_option)) {
+    if(run_real_s57_smoke) {
         if(s57_root.empty()) {
             qInfo() << "Skipping real S57 smoke because S57 dataset root is empty.";
             return 125;
@@ -202,17 +204,19 @@ int main(int argc, char** argv) {
         return 0;
     }
 
-    if(parser.isSet(real_s57_smoke_option)) {
+    if(run_real_s57_smoke) {
         widget.set_open_chart_result(*open_chart_result);
         if(!widget.has_chart() || widget.current_command_count() == 0 || widget.current_render_frame() == nullptr) {
             qCritical() << "Real S57 smoke did not produce a usable host render frame.";
             return 5;
         }
 
-        return 0;
+        if(!run_golden_capture) {
+            return 0;
+        }
     }
 
-    if(parser.isSet(golden_capture_option)) {
+    if(run_golden_capture) {
         if(capture_path.isEmpty()) {
             qCritical() << "--golden-capture requires --capture-path.";
             return 6;
